@@ -3,6 +3,14 @@ import styled from 'styled-components'
 export const FooterWrapper = styled.footer`
   background: ${({ theme }) => theme.colors.dark};
   padding: 4rem 5% 2rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding: 3rem 5% 1.5rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: 2.5rem 4% 1.5rem;
+  }
 `
 
 export const FooterTop = styled.div`
@@ -15,6 +23,12 @@ export const FooterTop = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 `
 
@@ -31,6 +45,10 @@ export const FooterLogo = styled.span`
   span {
     color: ${({ theme }) => theme.colors.orange};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 1.4rem;
+  }
 `
 
 export const BrandText = styled.p`
@@ -38,12 +56,20 @@ export const BrandText = styled.p`
   font-size: 0.85rem;
   line-height: 1.7;
   margin-bottom: 1.5rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 0.8rem;
+  }
 `
 
 export const ContactInfo = styled.div`
   color: rgba(255,255,255,0.45);
   font-size: 0.83rem;
   line-height: 2;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 0.8rem;
+  }
 `
 
 export const FooterCol = styled.div``
@@ -55,6 +81,11 @@ export const ColTitle = styled.h4`
   margin-bottom: 1.25rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
 `
 
 export const ColList = styled.ul`
@@ -75,6 +106,10 @@ export const ColLink = styled.a`
   &:hover {
     color: rgba(255,255,255,0.85);
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 0.8rem;
+  }
 `
 
 export const FooterBottom = styled.div`
@@ -89,5 +124,10 @@ export const FooterBottom = styled.div`
     flex-direction: column;
     gap: 0.5rem;
     text-align: center;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 0.75rem;
+    padding-top: 1.25rem;
   }
 `

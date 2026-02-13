@@ -3,6 +3,14 @@ import styled from 'styled-components'
 export const Section = styled.section`
   background: ${({ theme }) => theme.colors.cream};
   padding: 5rem 5%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding: 3rem 5%;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: 2rem 4%;
+  }
 `
 
 export const Card = styled.div`
@@ -10,6 +18,16 @@ export const Card = styled.div`
   border-radius: 20px;
   padding: 3rem;
   overflow: hidden;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
 `
 
 export const TwoCol = styled.div`
@@ -35,6 +53,11 @@ export const ImageCol = styled.div`
     object-fit: cover;
     display: block;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    border-radius: 8px;
+    max-height: 250px;
+  }
 `
 
 export const TextCol = styled.div`
@@ -50,6 +73,10 @@ export const SectionLabel = styled.span`
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 0.75rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 0.75rem;
+  }
 `
 
 export const SectionTitle = styled.h2`
@@ -59,6 +86,15 @@ export const SectionTitle = styled.h2`
   color: ${({ theme }) => theme.colors.white};
   line-height: 1.15;
   margin-bottom: 1rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    font-size: 1.75rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
 `
 
 export const SectionText = styled.p`
@@ -67,6 +103,16 @@ export const SectionText = styled.p`
   font-weight: 300;
   line-height: 1.8;
   margin-bottom: 2rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
 `
 
 export const BenefitList = styled.ul`
@@ -106,5 +152,23 @@ export const BenefitText = styled.div`
     color: rgba(255,255,255,0.5);
     font-size: 0.875rem;
     line-height: 1.6;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    strong {
+      font-size: 0.9rem;
+    }
+    span {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    strong {
+      font-size: 0.875rem;
+    }
+    span {
+      font-size: 0.8rem;
+    }
   }
 `

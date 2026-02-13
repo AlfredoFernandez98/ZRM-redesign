@@ -3,6 +3,14 @@ import styled from 'styled-components'
 export const Section = styled.section`
   background: ${({ theme }) => theme.colors.cream};
   padding: 5rem 5%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding: 3rem 5%;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: 2rem 4%;
+  }
 `
 
 export const SectionLabel = styled.span`
@@ -13,6 +21,10 @@ export const SectionLabel = styled.span`
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 0.75rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 0.85rem;
+  }
 `
 
 export const SectionTitle = styled.h2`
@@ -22,6 +34,16 @@ export const SectionTitle = styled.h2`
   color: ${({ theme }) => theme.colors.dark};
   line-height: 1.15;
   margin-bottom: 2.5rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 `
 
 export const Grid = styled.div`
@@ -64,6 +86,16 @@ export const FaqQuestion = styled.button`
   &:hover {
     background: ${({ theme }) => theme.colors.orange};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: 0.875rem 1rem;
+    font-size: 0.85rem;
+  }
 `
 
 export const FaqChevron = styled.span`
@@ -85,4 +117,14 @@ export const FaqAnswer = styled.div`
   color: ${({ theme }) => theme.colors.muted};
   font-size: 0.875rem;
   line-height: 1.7;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding: ${({ $open }) => $open ? '0 1.25rem 1rem' : '0 1.25rem'};
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: ${({ $open }) => $open ? '0 1rem 0.875rem' : '0 1rem'};
+    font-size: 0.8rem;
+  }
 `

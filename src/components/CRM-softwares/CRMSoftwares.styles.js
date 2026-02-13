@@ -99,6 +99,13 @@ export const Grid = styled.div`
   gap: 1.5rem;
 
   @media (max-width: ${({ theme }) => {
+    return theme.breakpoints.desktop
+  }}) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: ${({ theme }) => {
     return theme.breakpoints.tablet
   }}) {
     grid-template-columns: 1fr;

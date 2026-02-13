@@ -8,7 +8,7 @@ import DigitalPlatform from '../components/Digital-platform/DigitalPlatform'
 import Timeline from '../components/Timeline'
 import SolutionsGrid from '../components/SolutionsGrid/SolutionsGrid'
 import Testimonial from '../components/Testimonial/Testimonial'
-
+import CTASection from '../components/CTASection/CTASection'
 import Footer from '../components/Footer/Footer'
 import FAQ from '../components/FAQ'
 function Home() {
@@ -22,7 +22,7 @@ function Home() {
       <Timeline />
       <SolutionsGrid />
       <Testimonial />
-      
+      <CTASection />
       <FAQ />
       <Footer />
       
