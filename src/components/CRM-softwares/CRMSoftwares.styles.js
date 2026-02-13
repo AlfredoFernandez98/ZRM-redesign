@@ -48,7 +48,7 @@ export const SectionTitle = styled.h2`
     return theme.fonts.heading
   }};
   font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  font-weight: 800;
+  font-weight: 700;
   color: ${({ theme }) => {
     return theme.colors.dark
   }};
