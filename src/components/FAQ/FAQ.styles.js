@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Section = styled.section`
-  background: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.cream};
   padding: 5rem 5%;
 `
 
@@ -51,7 +51,7 @@ export const FaqQuestion = styled.button`
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem 1.5rem;
-  background: transparent;
+  background: white;
   border: none;
   cursor: pointer;
   font-size: 0.95rem;
@@ -62,7 +62,7 @@ export const FaqQuestion = styled.button`
   font-family: ${({ theme }) => theme.fonts.body};
 
   &:hover {
-    background: ${({ theme }) => theme.colors.lightBg};
+    background: ${({ theme }) => theme.colors.orange};
   }
 `
 

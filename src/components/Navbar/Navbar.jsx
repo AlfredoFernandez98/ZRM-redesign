@@ -2,13 +2,14 @@ import {
     Nav, Logo, NavLinks, NavLink, NavCta,
     BurgerButton, MobileMenu, MobileMenuHeader, MobileMenuLogo,
     MobileMenuNav, MobileMenuItem, MobileMenuFooter, MobileMenuCta,
-    CloseButton
+    CloseButton, ProgressBar
   } from './Navbar.styles'
   import { useState, useEffect } from 'react'
 
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
+    const [scrollProgress, setScrollProgress] = useState(0)
     
     useEffect(() => {
       if (isOpen) {
@@ -22,6 +23,19 @@ function Navbar() {
         document.body.style.overflow = 'unset'
       }
     }, [isOpen])
+
+    useEffect(() => {
+      const handleScroll = () => {
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
+        const scrolled = (window.scrollY / windowHeight) * 100
+        setScrollProgress(scrolled)
+      }
+
+      window.addEventListener('scroll', handleScroll)
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }, [])
 
   return (
     <>
@@ -44,6 +58,8 @@ function Navbar() {
         >
           <span /><span /><span />
         </BurgerButton>
+
+        <ProgressBar $progress={scrollProgress} />
       </Nav>
 
       <MobileMenu $open={isOpen}>

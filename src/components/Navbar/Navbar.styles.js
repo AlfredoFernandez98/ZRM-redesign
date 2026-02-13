@@ -23,6 +23,21 @@ export const Nav = styled.nav`
   }
 `
 
+export const ProgressBar = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: ${({ theme }) => {
+    return theme.colors.orange
+  }};
+  width: ${({ $progress }) => {
+    return $progress
+  }}%;
+  transition: width 0.1s ease-out;
+  z-index: 1001;
+`
+
 export const Logo = styled.span`
   font-family: ${({ theme }) => {
     return theme.fonts.heading
