@@ -1,0 +1,93 @@
+import styled from 'styled-components'
+
+export const FooterWrapper = styled.footer`
+  background: ${({ theme }) => theme.colors.dark};
+  padding: 4rem 5% 2rem;
+`
+
+export const FooterTop = styled.div`
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+`
+
+export const BrandCol = styled.div``
+
+export const FooterLogo = styled.span`
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme.colors.white};
+  display: block;
+  margin-bottom: 1rem;
+
+  span {
+    color: ${({ theme }) => theme.colors.orange};
+  }
+`
+
+export const BrandText = styled.p`
+  color: rgba(255,255,255,0.45);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+`
+
+export const ContactInfo = styled.div`
+  color: rgba(255,255,255,0.45);
+  font-size: 0.83rem;
+  line-height: 2;
+`
+
+export const FooterCol = styled.div``
+
+export const ColTitle = styled.h4`
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+`
+
+export const ColList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+`
+
+export const ColLink = styled.a`
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+
+  &:hover {
+    color: rgba(255,255,255,0.85);
+  }
+`
+
+export const FooterBottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  color: rgba(255,255,255,0.3);
+  font-size: 0.8rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+`
