@@ -77,9 +77,3 @@ Orange bruges strategisk som det forskerne kalder en "kontrasteffekt" – en var
 Den mørkeblå baggrund fungerer som en rolig, neutral base der styrker koncentrationen og lader indholdet tale. Ved at undgå flere stærke farver på samme tid sikrer vi at siden ikke distraherer, men i stedet guider brugeren naturligt gennem indholdet.
 
 **Kilde:** [Kinnarps – Farver påvirker, hvordan vi har det og fungerer som mennesker](https://www.kinnarps.dk/viden/forskellige-farver-pavirker-os-pa-forskellige-mader/)
-
----
-
-## Originale side
-
-Link til originalen: https://zrm.dk/services-alle-losninger/software-udvikling/
