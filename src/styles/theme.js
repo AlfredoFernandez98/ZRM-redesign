@@ -12,8 +12,8 @@ const theme = {
       border: '#DDE3EA',
     },
     fonts: {
-      heading: "'Syne', sans-serif",
-      body: "'DM Sans', sans-serif",
+      heading: "'Barlow Condensed', sans-serif",
+      body: "'Barlow', sans-serif",
     },
     breakpoints: {
       mobile: '480px',

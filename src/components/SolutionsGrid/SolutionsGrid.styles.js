@@ -57,6 +57,11 @@ export const Grid = styled.div`
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
   }
+
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
 `
 
 export const GridCard = styled.div`
@@ -231,12 +236,19 @@ export const CtaButton = styled.a`
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s ease, transform 0.15s ease;
   align-self: flex-start;
 
   &:hover {
     background: #d97308;
     transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid ${({ theme }) => {
+      return theme.colors.orange
+    }};
+    outline-offset: 2px;
   }
 
   @media (max-width: ${({ theme }) => {

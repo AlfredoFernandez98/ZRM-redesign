@@ -101,10 +101,16 @@ export const ColLink = styled.a`
   color: rgba(255,255,255,0.45);
   text-decoration: none;
   font-size: 0.85rem;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
 
   &:hover {
     color: rgba(255,255,255,0.85);
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.orange};
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {

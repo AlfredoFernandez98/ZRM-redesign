@@ -68,7 +68,7 @@ export const TextCol = styled.div`
 export const SectionLabel = styled.span`
   display: block;
   color: ${({ theme }) => theme.colors.orange};
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -98,7 +98,7 @@ export const SectionTitle = styled.h2`
 `
 
 export const SectionText = styled.p`
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.65);
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.8;
@@ -149,7 +149,7 @@ export const BenefitText = styled.div`
   }
 
   span {
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.6);
     font-size: 0.875rem;
     line-height: 1.6;
   }

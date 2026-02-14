@@ -4,7 +4,7 @@ export const HeroSection = styled.section`
   background: ${({ theme }) => {
     return theme.colors.dark
   }};
-  padding: 6rem 5% 5rem;
+  padding: 5rem 5%;
   position: relative;
   overflow: hidden;
 
@@ -22,13 +22,13 @@ export const HeroSection = styled.section`
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.tablet
   }}) {
-    padding: 4rem 5% 3rem;
+    padding: 3rem 5%;
   }
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.mobile
   }}) {
-    padding: 3rem 4% 2.5rem;
+    padding: 2rem 4%;
 
     &::before {
       width: 300px;
@@ -72,14 +72,14 @@ export const HeroTitle = styled.h1`
   font-family: ${({ theme }) => {
     return theme.fonts.heading
   }};
-  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 800;
   color: ${({ theme }) => {
     return theme.colors.white
   }};
   line-height: 1.1;
-  max-width: 700px;
-  margin-bottom: 1.5rem;
+  max-width: 900px;
+  margin-bottom: 2rem;
 
   em {
     font-style: normal;
@@ -91,29 +91,30 @@ export const HeroTitle = styled.h1`
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.mobile
   }}) {
-    font-size: 2rem;
+    font-size: 2.5rem;
     line-height: 1.15;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 `
 
 export const HeroText = styled.p`
   color: rgba(255,255,255,0.75);
-  font-size: 1.1rem;
-  max-width: 540px;
+  font-size: 1.3rem;
+  max-width: 700px;
   margin-bottom: 2.5rem;
   font-weight: 400;
+  line-height: 1.7;
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.tablet
   }}) {
-    font-size: 1rem;
+    font-size: 1.15rem;
   }
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.mobile
   }}) {
-    font-size: 0.95rem;
+    font-size: 1rem;
     margin-bottom: 2rem;
   }
 `
@@ -143,7 +144,7 @@ export const BtnPrimary = styled.a`
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s ease, transform 0.15s ease;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -151,6 +152,13 @@ export const BtnPrimary = styled.a`
   &:hover {
     background: #d97308;
     transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid ${({ theme }) => {
+      return theme.colors.orange
+    }};
+    outline-offset: 2px;
   }
 
   @media (max-width: ${({ theme }) => {
@@ -165,7 +173,7 @@ export const BtnPrimary = styled.a`
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.mobile
   }}) {
-    padding: 0.7rem 1.3rem;
+    padding: 0.75rem 1.3rem;
     font-size: 0.875rem;
   }
 `
@@ -179,7 +187,7 @@ export const BtnSecondary = styled.a`
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.2s ease, color 0.2s ease;
   display: inline-block;
 
   &:hover {
@@ -187,6 +195,13 @@ export const BtnSecondary = styled.a`
     color: ${({ theme }) => {
       return theme.colors.white
     }};
+  }
+
+  &:focus-visible {
+    outline: 3px solid ${({ theme }) => {
+      return theme.colors.orange
+    }};
+    outline-offset: 2px;
   }
 
   @media (max-width: ${({ theme }) => {
@@ -202,7 +217,7 @@ export const BtnSecondary = styled.a`
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.mobile
   }}) {
-    padding: 0.7rem 1.3rem;
+    padding: 0.75rem 1.3rem;
     font-size: 0.875rem;
   }
 `

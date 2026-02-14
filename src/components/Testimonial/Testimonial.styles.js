@@ -37,18 +37,18 @@ export const Card = styled.div`
 `
 
 export const QuoteSection = styled.div`
-  padding: 3rem;
+  padding: 2rem;
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.tablet
   }}) {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.25rem;
   }
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.mobile
   }}) {
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1rem;
   }
 `
 
@@ -56,20 +56,20 @@ export const QuoteMark = styled.span`
   font-family: ${({ theme }) => {
     return theme.fonts.heading
   }};
-  font-size: 5rem;
+  font-size: 4rem;
   color: ${({ theme }) => {
     return theme.colors.orange
   }};
   line-height: 0.5;
   display: block;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   opacity: 1;
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.tablet
   }}) {
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 0.75rem;
   }
 
   @media (max-width: ${({ theme }) => {
@@ -82,7 +82,7 @@ export const QuoteMarkEnd = styled.span`
   font-family: ${({ theme }) => {
     return theme.fonts.heading
   }};
-  font-size: 5rem;
+  font-size: 4rem;
   color: ${({ theme }) => {
     return theme.colors.orange
   }};
@@ -90,14 +90,14 @@ export const QuoteMarkEnd = styled.span`
   display: block;
   text-align: right;
   opacity: 1;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.tablet
   }}) {
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 0.75rem;
   }
 
   @media (max-width: ${({ theme }) => {
@@ -111,24 +111,24 @@ export const QuoteText = styled.p`
   color: ${({ theme }) => {
     return theme.colors.dark
   }};
-  line-height: 1.7;
+  line-height: 1.6;
   font-style: italic;
   font-weight: 400;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.tablet
   }}) {
     font-size: 1.25rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.mobile
   }}) {
     font-size: 1.1rem;
-    line-height: 1.6;
+    line-height: 1.5;
   }
 `
 
@@ -199,7 +199,7 @@ export const AuthorInfo = styled.div`
 
 export const ImageWrapper = styled.div`
   width: 100%;
-  height: 430px;
+  height: 450px;
   overflow: hidden;
 
   img {
@@ -213,12 +213,12 @@ export const ImageWrapper = styled.div`
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.tablet
   }}) {
-    height: 350px;
+    height: 300px;
   }
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.mobile
   }}) {
-    height: 280px;
+    height: 250px;
   }
 `

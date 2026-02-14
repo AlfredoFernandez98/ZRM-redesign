@@ -87,6 +87,11 @@ export const FaqQuestion = styled.button`
     background: ${({ theme }) => theme.colors.orange};
   }
 
+  &:focus-visible {
+    outline: 3px solid ${({ theme }) => theme.colors.orange};
+    outline-offset: -3px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: 1rem 1.25rem;
     font-size: 0.9rem;
@@ -111,7 +116,7 @@ export const FaqChevron = styled.span`
 
 export const FaqAnswer = styled.div`
   padding: ${({ $open }) => $open ? '0 1.5rem 1.25rem' : '0 1.5rem'};
-  max-height: ${({ $open }) => $open ? '200px' : '0'};
+  max-height: ${({ $open }) => $open ? '500px' : '0'};
   overflow: hidden;
   transition: max-height 0.3s ease, padding 0.3s ease;
   color: ${({ theme }) => theme.colors.muted};

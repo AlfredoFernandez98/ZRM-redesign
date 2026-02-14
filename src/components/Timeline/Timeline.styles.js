@@ -72,7 +72,7 @@ export const SectionIntro = styled.p`
   line-height: 1.7;
   margin-bottom: 1rem;
   text-align: center;
-  max-width: 800px;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 

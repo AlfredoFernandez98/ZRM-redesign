@@ -41,7 +41,7 @@ export const Section = styled.section`
 export const SectionLabel = styled.span`
   display: block;
   color: ${({ theme }) => theme.colors.orange};
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -112,6 +112,11 @@ export const BtnPrimary = styled.a`
     transform: translateY(-1px);
   }
 
+  &:focus-visible {
+    outline: 3px solid ${({ theme }) => theme.colors.orange};
+    outline-offset: 2px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
@@ -131,6 +136,11 @@ export const BtnSecondary = styled.a`
 
   &:hover {
     border-color: rgba(255,255,255,0.6);
+  }
+
+  &:focus-visible {
+    outline: 3px solid ${({ theme }) => theme.colors.orange};
+    outline-offset: 2px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {

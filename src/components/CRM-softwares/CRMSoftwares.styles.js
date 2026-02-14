@@ -187,7 +187,7 @@ export const CardButton = styled.a`
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 600;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s ease, color 0.2s ease;
 
   &:hover {
     background: ${({ theme }) => {
@@ -196,6 +196,13 @@ export const CardButton = styled.a`
     color: ${({ theme }) => {
       return theme.colors.white
     }};
+  }
+
+  &:focus-visible {
+    outline: 3px solid ${({ theme }) => {
+      return theme.colors.orange
+    }};
+    outline-offset: 2px;
   }
 
   @media (max-width: ${({ theme }) => {
