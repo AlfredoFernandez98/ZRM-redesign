@@ -53,6 +53,7 @@ Den originale side er opbygget som en lang teksttung side uden tydelige visuelle
 
 ---
 
+
 ## Hvad jeg har ændret
 
 Jeg tog udgangspunkt i den originale side og forsøgte at gøre den mere overskuelig og lettere at navigere i. Jeg har omstruktureret indholdet så det følger en mere naturlig rækkefølge – fra hvad ZRM tilbyder, til hvordan de arbejder, og til sidst en tydelig opfordring til at tage kontakt. Sektionerne skifter bevidst mellem mørke og lyse baggrunde for at give siden luft og gøre det nemmere at skimme.
