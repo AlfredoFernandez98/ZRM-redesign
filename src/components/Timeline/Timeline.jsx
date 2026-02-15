@@ -3,7 +3,7 @@ import {
   Section, Container, SectionLabel, SectionTitle, SectionIntro,
   TimelineScroll, TimelineWrapper, TimelineItem, TimelineIcon,
   TimelineContent, TimelineStepTitle, TimelineStepDesc, TimelineLine,
-  ScrollIndicator, TimelineScrollWrapper
+  ScrollIndicator, TimelineScrollWrapper, CustomScrollbar, CustomScrollbarThumb
 } from './Timeline.styles'
 
 const timelineSteps = [
@@ -42,8 +42,22 @@ const timelineSteps = [
 function Timeline() {
   const [visibleItems, setVisibleItems] = useState([])
   const [scrollPosition, setScrollPosition] = useState('start') // 'start', 'middle', 'end'
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [thumbWidth, setThumbWidth] = useState(20)
   const itemRefs = useRef([])
   const scrollRef = useRef(null)
+  const customScrollbarRef = useRef(null)
+
+  const handleCustomScrollbarClick = (e) => {
+    if (!scrollRef.current || !customScrollbarRef.current) return
+    
+    const rect = customScrollbarRef.current.getBoundingClientRect()
+    const clickPosition = (e.clientX - rect.left) / rect.width
+    const { scrollWidth, clientWidth } = scrollRef.current
+    const maxScroll = scrollWidth - clientWidth
+    
+    scrollRef.current.scrollLeft = clickPosition * maxScroll
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -81,6 +95,7 @@ function Timeline() {
       const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
       const scrollThreshold = 50 // pixels
 
+      // Calculate scroll position for indicators
       if (scrollLeft < scrollThreshold) {
         setScrollPosition('start')
       } else if (scrollLeft + clientWidth >= scrollWidth - scrollThreshold) {
@@ -88,6 +103,14 @@ function Timeline() {
       } else {
         setScrollPosition('middle')
       }
+
+      // Calculate custom scrollbar position and size
+      const maxScroll = scrollWidth - clientWidth
+      const scrollPercentage = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0
+      const thumbWidthPercentage = (clientWidth / scrollWidth) * 100
+      
+      setScrollProgress(scrollPercentage * (1 - thumbWidthPercentage / 100))
+      setThumbWidth(Math.max(thumbWidthPercentage, 10)) // minimum 10% width
     }
 
     const scrollElement = scrollRef.current
@@ -95,11 +118,15 @@ function Timeline() {
       scrollElement.addEventListener('scroll', handleScroll)
       // Check initial position
       handleScroll()
+      
+      // Recalculate on window resize
+      window.addEventListener('resize', handleScroll)
     }
 
     return () => {
       if (scrollElement) {
         scrollElement.removeEventListener('scroll', handleScroll)
+        window.removeEventListener('resize', handleScroll)
       }
     }
   }, [])
@@ -144,6 +171,16 @@ function Timeline() {
               ))}
             </TimelineWrapper>
           </TimelineScroll>
+
+          <CustomScrollbar 
+            ref={customScrollbarRef}
+            onClick={handleCustomScrollbarClick}
+          >
+            <CustomScrollbarThumb 
+              $scrollProgress={scrollProgress}
+              $thumbWidth={thumbWidth}
+            />
+          </CustomScrollbar>
 
           {scrollPosition === 'start' && (
             <ScrollIndicator $position="right">

@@ -34,8 +34,10 @@ function FAQ() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = itemRefs.current.indexOf(entry.target)
-            if (index !== -1 && !visibleItems.includes(index)) {
-              setVisibleItems((prev) => [...prev, index])
+            if (index !== -1) {
+              setVisibleItems((prev) => 
+                prev.includes(index) ? prev : [...prev, index]
+              )
             }
           }
         })
@@ -52,9 +54,10 @@ function FAQ() {
         if (ref) observer.unobserve(ref)
       })
     }
-  }, [visibleItems])
+  }, []) // ← tom array her!
 
   const toggle = (index) => {
+    console.log('Clicking FAQ index:', index, 'Current openIndex:', openIndex)
     setOpenIndex(openIndex === index ? null : index)
   }
 
@@ -76,7 +79,7 @@ function FAQ() {
               <FaqChevron $open={openIndex === index}>▾</FaqChevron>
             </FaqQuestion>
             <FaqAnswer $open={openIndex === index}>
-              {faq.answer}
+              <div>{faq.answer}</div>
             </FaqAnswer>
           </FaqItem>
         ))}

@@ -70,6 +70,42 @@ export const SectionIntro = styled.p`
 export const TimelineScrollWrapper = styled.div`
   position: relative;
   margin-top: 2rem;
+  padding-bottom: 20px;
+`
+
+export const CustomScrollbar = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+  height: 12px;
+  background: #e8e5e0;
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 5;
+  cursor: pointer;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    left: 4%;
+    right: 4%;
+    height: 10px;
+  }
+`
+
+export const CustomScrollbarThumb = styled.div`
+  position: absolute;
+  top: 0;
+  left: ${({ $scrollProgress }) => $scrollProgress}%;
+  height: 100%;
+  width: ${({ $thumbWidth }) => $thumbWidth}%;
+  background: ${({ theme }) => theme.colors.orange};
+  border-radius: 6px;
+  transition: background 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: #d97308;
+  }
 `
 
 export const ScrollIndicator = styled.div`
@@ -126,29 +162,27 @@ export const TimelineScroll = styled.div`
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: ${({ theme }) => theme.colors.orange} ${({ theme }) => theme.colors.lightBg};
   padding: 2rem 0;
   margin: 0 -5%;
   padding-left: 5%;
   padding-right: 5%;
+  
+  /* Completely hide native scrollbar - we only use custom one */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 
   &::-webkit-scrollbar {
-    height: 8px;
+    display: none !important; /* Chrome, Safari, Opera */
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+    -webkit-appearance: none !important;
   }
 
-  &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.lightBg};
-    border-radius: 10px;
-  }
-
+  &::-webkit-scrollbar-track,
   &::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.orange};
-    border-radius: 10px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #d97308;
+    display: none !important;
+    background: transparent !important;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {

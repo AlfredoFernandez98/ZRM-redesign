@@ -50,6 +50,7 @@ export const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  align-items: start;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-template-columns: 1fr;
@@ -57,24 +58,18 @@ export const Grid = styled.div`
 `
 
 export const FaqItem = styled.div`
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 2px solid ${({ $open, theme }) => $open ? theme.colors.orange : theme.colors.border};
   border-radius: 10px;
   overflow: hidden;
-  transition: border-color 0.2s;
-  opacity: ${({ $visible }) => {
-    return $visible ? '1' : '0'
-  }};
-  transform: translateY(${({ $visible }) => {
-    return $visible ? '0' : '20px'
-  }});
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out, border-color 0.2s;
-  transition-delay: ${({ $delay }) => {
-    return $delay
-  }}s;
-
-  ${({ $open, theme }) => $open && `
-    border-color: ${theme.colors.orange};
-  `}
+  background: white;
+  opacity: ${({ $visible }) => $visible ? '1' : '0'};
+  transform: translateY(${({ $visible }) => $visible ? '0' : '20px'});
+  
+  /* Separate transitions - delay only for initial visibility animation */
+  transition: 
+    border-color 0.3s ease 0s,
+    opacity 0.6s ease-out ${({ $delay, $visible }) => $visible ? `${$delay}s` : '0s'},
+    transform 0.6s ease-out ${({ $delay, $visible }) => $visible ? `${$delay}s` : '0s'};
 `
 
 export const FaqQuestion = styled.button`
@@ -87,14 +82,19 @@ export const FaqQuestion = styled.button`
   border: none;
   cursor: pointer;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   color: ${({ theme }) => theme.colors.dark};
   text-align: left;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
   font-family: ${({ theme }) => theme.fonts.body};
 
   &:hover {
     background: ${({ theme }) => theme.colors.orange};
+    color: white;
+  }
+
+  &:hover span {
+    color: white;
   }
 
   &:focus-visible {
@@ -125,21 +125,32 @@ export const FaqChevron = styled.span`
 `
 
 export const FaqAnswer = styled.div`
-  padding: ${({ $open }) => $open ? '0 1.5rem 1.25rem' : '0 1.5rem'};
   max-height: ${({ $open }) => $open ? '500px' : '0'};
   overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  color: ${({ theme }) => theme.colors.muted};
-  font-size: 0.875rem;
-  line-height: 1.7;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+
+  > div {
+    padding: 1rem;
+    color: ${({ theme }) => theme.colors.muted};
+    font-size: 0.875rem;
+    line-height: 1.7;
+    font-weight: 400;
+    opacity: ${({ $open }) => $open ? '1' : '0'};
+    transition: opacity 0.2s ease-in-out ${({ $open }) => $open ? '0.15s' : '0s'};
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: ${({ $open }) => $open ? '0 1.25rem 1rem' : '0 1.25rem'};
-    font-size: 0.85rem;
+    > div {
+      padding: 0 1.25rem 1rem 1.25rem;
+      font-size: 0.85rem;
+    }
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: ${({ $open }) => $open ? '0 1rem 0.875rem' : '0 1rem'};
-    font-size: 0.8rem;
+    > div {
+      padding: 0 1rem 0.875rem 1rem;
+      font-size: 0.8rem;
+    }
   }
 `

@@ -60,6 +60,10 @@ export const GridCard = styled.div`
   color: ${({ theme }) => theme.colors.dark};
   text-align: center;
   cursor: default;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: ${({ $visible }) => $visible ? '1' : '0'};
   transform: translateY(${({ $visible }) => $visible ? '0' : '20px'});
   transition: opacity 0.5s ease-out, transform 0.5s ease-out, border-color 0.2s, box-shadow 0.2s;
@@ -74,12 +78,14 @@ export const GridCard = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: 1rem;
     font-size: 0.85rem;
+    min-height: 90px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0.875rem 0.75rem;
     font-size: 0.8rem;
     border-radius: 8px;
+    min-height: 80px;
   }
 `
 
