@@ -19,12 +19,6 @@ npm run dev
 
 - **React 19** (Vite som build tool)
 - **Styled-components** til komponent-baseret styling
-- **IntersectionObserver API** til scroll-triggered animations
-- **CSS Animations** og transforms for performance
-- **Responsive design** med mobile-first approach
-- **Hooks** (useState, useEffect, useRef) til state management
-
-
 ---
 
 ## Projektstruktur
