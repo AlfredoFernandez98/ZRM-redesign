@@ -6,6 +6,13 @@ export const Section = styled.section`
   text-align: center;
   position: relative;
   overflow: hidden;
+  opacity: ${({ $visible }) => {
+    return $visible ? '1' : '0'
+  }};
+  transform: translateY(${({ $visible }) => {
+    return $visible ? '0' : '40px'
+  }});
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 
   &::before {
     content: '';

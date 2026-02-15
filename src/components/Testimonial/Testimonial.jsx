@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import mathias from '../../assets/mathias.png'
 import grod from '../../assets/grod.png'
 import {
@@ -6,9 +7,33 @@ import {
 } from './Testimonial.styles'
 
 function Testimonial() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <Section>
-      <Card>
+    <Section ref={sectionRef}>
+      <Card $visible={isVisible}>
         <QuoteSection>
           <QuoteMark>"</QuoteMark>
           <QuoteText>

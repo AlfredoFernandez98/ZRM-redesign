@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   Section, SectionLabel, SectionTitle,
   Grid, FaqItem, FaqQuestion, FaqChevron, FaqAnswer
@@ -25,6 +25,34 @@ const faqs = [
 
 function FAQ() {
   const [openIndex, setOpenIndex] = useState(null)
+  const [visibleItems, setVisibleItems] = useState([])
+  const itemRefs = useRef([])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = itemRefs.current.indexOf(entry.target)
+            if (index !== -1 && !visibleItems.includes(index)) {
+              setVisibleItems((prev) => [...prev, index])
+            }
+          }
+        })
+      },
+      { threshold: 0.2 }
+    )
+
+    itemRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref)
+    })
+
+    return () => {
+      itemRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref)
+      })
+    }
+  }, [visibleItems])
 
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index)
@@ -36,7 +64,13 @@ function FAQ() {
       <SectionTitle>FAQ om software-udvikling</SectionTitle>
       <Grid>
         {faqs.map((faq, index) => (
-          <FaqItem key={index} $open={openIndex === index}>
+          <FaqItem 
+            key={index} 
+            $open={openIndex === index}
+            $visible={visibleItems.includes(index)}
+            $delay={index * 0.1}
+            ref={(el) => (itemRefs.current[index] = el)}
+          >
             <FaqQuestion onClick={() => toggle(index)}>
               {faq.question}
               <FaqChevron $open={openIndex === index}>▾</FaqChevron>

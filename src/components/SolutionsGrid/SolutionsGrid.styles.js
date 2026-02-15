@@ -79,8 +79,17 @@ export const GridCard = styled.div`
     return theme.colors.dark
   }};
   text-align: center;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
   cursor: default;
+  opacity: ${({ $visible }) => {
+    return $visible ? '1' : '0'
+  }};
+  transform: translateY(${({ $visible }) => {
+    return $visible ? '0' : '20px'
+  }});
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, border-color 0.2s, box-shadow 0.2s;
+  transition-delay: ${({ $delay }) => {
+    return $delay
+  }}s;
 
   &:hover {
     border-color: ${({ theme }) => {

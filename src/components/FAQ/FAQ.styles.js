@@ -61,6 +61,16 @@ export const FaqItem = styled.div`
   border-radius: 10px;
   overflow: hidden;
   transition: border-color 0.2s;
+  opacity: ${({ $visible }) => {
+    return $visible ? '1' : '0'
+  }};
+  transform: translateY(${({ $visible }) => {
+    return $visible ? '0' : '20px'
+  }});
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, border-color 0.2s;
+  transition-delay: ${({ $delay }) => {
+    return $delay
+  }}s;
 
   ${({ $open, theme }) => $open && `
     border-color: ${theme.colors.orange};

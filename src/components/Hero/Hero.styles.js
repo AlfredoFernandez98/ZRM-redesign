@@ -15,8 +15,25 @@ export const HeroSection = styled.section`
     right: -80px;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(245,133,10,0.15) 0%, transparent 70%);
+    background: radial-gradient(
+      circle, 
+      rgba(245,133,10,0.20) 0%, 
+      rgba(245,133,10,0.08) 50%,
+      transparent 70%
+    );
     pointer-events: none;
+    animation: gradientPulse 8s ease-in-out infinite;
+  }
+
+  @keyframes gradientPulse {
+    0%, 100% {
+      transform: scale(1) translate(0, 0);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1) translate(-10px, 10px);
+      opacity: 0.8;
+    }
   }
 
   @media (max-width: ${({ theme }) => {
@@ -31,10 +48,10 @@ export const HeroSection = styled.section`
     padding: 2rem 4%;
 
     &::before {
-      width: 300px;
-      height: 300px;
-      top: -50px;
-      right: -50px;
+      width: 250px;
+      height: 250px;
+      top: -40px;
+      right: -40px;
     }
   }
 `
@@ -53,6 +70,18 @@ export const HeroLabel = styled.span`
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
+  animation: fadeInUp 0.6s ease-out 0.2s backwards;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.tablet
@@ -80,6 +109,7 @@ export const HeroTitle = styled.h1`
   line-height: 1.1;
   max-width: 900px;
   margin-bottom: 2rem;
+  animation: fadeInUp 0.6s ease-out 0.4s backwards;
 
   em {
     font-style: normal;
@@ -101,21 +131,181 @@ export const HeroText = styled.p`
   color: rgba(255,255,255,0.75);
   font-size: 1.3rem;
   max-width: 700px;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   font-weight: 400;
   line-height: 1.7;
+  animation: fadeInUp 0.6s ease-out 0.6s backwards;
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.tablet
   }}) {
     font-size: 1.15rem;
+    margin-bottom: 1.75rem;
   }
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.mobile
   }}) {
     font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+`
+
+export const TrustSignals = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 0.6s ease-out 0.7s backwards;
+  flex-wrap: wrap;
+
+  @media (max-width: ${({ theme }) => {
+    return theme.breakpoints.tablet
+  }}) {
+    gap: 1.5rem;
     margin-bottom: 2rem;
+  }
+
+  @media (max-width: ${({ theme }) => {
+    return theme.breakpoints.mobile
+  }}) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+`
+
+export const TrustBadge = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(245,133,10,0.4);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: ${({ theme }) => {
+    return theme.breakpoints.tablet
+  }}) {
+    padding: 0.65rem 1.1rem;
+  }
+
+  @media (max-width: ${({ theme }) => {
+    return theme.breakpoints.mobile
+  }}) {
+    padding: 0.6rem 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+`
+
+export const GoogleStars = styled.div`
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.1em;
+
+  @media (max-width: ${({ theme }) => {
+    return theme.breakpoints.tablet
+  }}) {
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: ${({ theme }) => {
+    return theme.breakpoints.mobile
+  }}) {
+    font-size: 0.9rem;
+  }
+`
+
+export const RatingText = styled.div`
+  color: rgba(255,255,255,0.9);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+
+  strong {
+    font-weight: 700;
+    color: ${({ theme }) => {
+      return theme.colors.white
+    }};
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: ${({ theme }) => {
+    return theme.breakpoints.tablet
+  }}) {
+    font-size: 0.9rem;
+    
+    strong {
+      font-size: 1.05rem;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => {
+    return theme.breakpoints.mobile
+  }}) {
+    font-size: 0.875rem;
+    
+    strong {
+      font-size: 1rem;
+    }
+  }
+`
+
+export const CustomerLogos = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  @media (max-width: ${({ theme }) => {
+    return theme.breakpoints.mobile
+  }}) {
+    width: 100%;
+    gap: 0.4rem;
+  }
+`
+
+export const CustomerLogo = styled.div`
+  color: rgba(255,255,255,0.6);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  background: rgba(255,255,255,0.06);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.9);
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  @media (max-width: ${({ theme }) => {
+    return theme.breakpoints.tablet
+  }}) {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.8rem;
+  }
+
+  @media (max-width: ${({ theme }) => {
+    return theme.breakpoints.mobile
+  }}) {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.7rem;
+    flex: 0 1 auto;
   }
 `
 
@@ -123,6 +313,7 @@ export const HeroButtons = styled.div`
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  animation: fadeInUp 0.6s ease-out 0.9s backwards;
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.tablet
@@ -148,10 +339,23 @@ export const BtnPrimary = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  animation: breathe 3s ease-in-out infinite;
+
+  @keyframes breathe {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 4px 12px rgba(245, 133, 10, 0.3);
+    }
+    50% {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(245, 133, 10, 0.5);
+    }
+  }
 
   &:hover {
     background: #d97308;
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1);
+    animation: none;
   }
 
   &:focus-visible {

@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import digiplat from '../../assets/digiplat.png'
 import {
   Section, Card, TwoCol, ImageCol, TextCol,
@@ -25,9 +26,33 @@ const benefits = [
 ]
 
 function DigitalPlatform() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <Section>
-      <Card>
+    <Section ref={sectionRef}>
+      <Card $visible={isVisible}>
         <TwoCol>
           <ImageCol>
             <img src={digiplat} alt="Digitale platforme hos ZRM" />
