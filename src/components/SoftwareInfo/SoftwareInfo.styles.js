@@ -25,6 +25,13 @@ export const Card = styled.div`
   border-radius: 20px;
   padding: 3rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  opacity: ${({ $visible }) => {
+    return $visible ? '1' : '0'
+  }};
+  transform: translateY(${({ $visible }) => {
+    return $visible ? '0' : '30px'
+  }});
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.tablet

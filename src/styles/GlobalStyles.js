@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, keyframes } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
@@ -48,6 +48,7 @@ const GlobalStyles = createGlobalStyle`
       font-size: 16px;
     }
   }
+
 `
 
 export default GlobalStyles

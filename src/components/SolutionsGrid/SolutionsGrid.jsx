@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import {
     Section, TwoCol, Grid, GridCard, TextCol,
     SectionLabel, SectionTitle, Divider,
@@ -22,12 +23,48 @@ import {
   ]
   
   function SolutionsGrid() {
+    const [visibleCards, setVisibleCards] = useState([])
+    const cardRefs = useRef([])
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = cardRefs.current.indexOf(entry.target)
+              if (index !== -1 && !visibleCards.includes(index)) {
+                setVisibleCards((prev) => [...prev, index])
+              }
+            }
+          })
+        },
+        { threshold: 0.1 }
+      )
+
+      cardRefs.current.forEach((ref) => {
+        if (ref) observer.observe(ref)
+      })
+
+      return () => {
+        cardRefs.current.forEach((ref) => {
+          if (ref) observer.unobserve(ref)
+        })
+      }
+    }, [visibleCards])
+
     return (
       <Section>
         <TwoCol>
           <Grid>
-            {solutions.map((solution) => (
-              <GridCard key={solution}>{solution}</GridCard>
+            {solutions.map((solution, index) => (
+              <GridCard 
+                key={solution}
+                $visible={visibleCards.includes(index)}
+                $delay={index * 0.05}
+                ref={(el) => (cardRefs.current[index] = el)}
+              >
+                {solution}
+              </GridCard>
             ))}
           </Grid>
           <TextCol>

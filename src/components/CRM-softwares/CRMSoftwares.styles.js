@@ -125,6 +125,16 @@ export const Card = styled.div`
   text-align: center;
   transition: box-shadow 0.2s, transform 0.2s;
   position: relative;
+  opacity: ${({ $visible }) => {
+    return $visible ? '1' : '0'
+  }};
+  transform: translateY(${({ $visible }) => {
+    return $visible ? '0' : '30px'
+  }});
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.2s;
+  transition-delay: ${({ $delay }) => {
+    return $delay
+  }}s;
 
   &:hover {
     box-shadow: 0 8px 32px rgba(0,0,0,0.08);

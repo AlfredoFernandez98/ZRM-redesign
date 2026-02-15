@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import tavlen from '../../assets/tavlen.png'
 import {
   Section, Card, TwoCol, TextCol, ImageCol,
@@ -21,9 +22,33 @@ const benefits = [
 ]
 
 function SoftwareInfo() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <Section>
-      <Card>
+    <Section ref={sectionRef}>
+      <Card $visible={isVisible}>
         <TwoCol>
           <TextCol>
             <SectionLabel>Software-udvikling</SectionLabel>

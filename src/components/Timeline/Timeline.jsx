@@ -3,7 +3,7 @@ import {
   Section, Container, SectionLabel, SectionTitle, SectionIntro,
   TimelineScroll, TimelineWrapper, TimelineItem, TimelineIcon,
   TimelineContent, TimelineStepTitle, TimelineStepDesc, TimelineLine,
-  SwipeIndicator
+  ScrollIndicator, TimelineScrollWrapper
 } from './Timeline.styles'
 
 const timelineSteps = [
@@ -41,7 +41,9 @@ const timelineSteps = [
 
 function Timeline() {
   const [visibleItems, setVisibleItems] = useState([])
+  const [scrollPosition, setScrollPosition] = useState('start') // 'start', 'middle', 'end'
   const itemRefs = useRef([])
+  const scrollRef = useRef(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -72,6 +74,36 @@ function Timeline() {
     }
   }, [visibleItems])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!scrollRef.current) return
+      
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
+      const scrollThreshold = 50 // pixels
+
+      if (scrollLeft < scrollThreshold) {
+        setScrollPosition('start')
+      } else if (scrollLeft + clientWidth >= scrollWidth - scrollThreshold) {
+        setScrollPosition('end')
+      } else {
+        setScrollPosition('middle')
+      }
+    }
+
+    const scrollElement = scrollRef.current
+    if (scrollElement) {
+      scrollElement.addEventListener('scroll', handleScroll)
+      // Check initial position
+      handleScroll()
+    }
+
+    return () => {
+      if (scrollElement) {
+        scrollElement.removeEventListener('scroll', handleScroll)
+      }
+    }
+  }, [])
+
   return (
     <Section>
       <Container>
@@ -90,31 +122,41 @@ function Timeline() {
           Hele processen gennemføres i <strong style={{color: '#F5850A'}}>6 klare trin</strong>, der sikrer en problemfri og effektiv implementering.
         </SectionIntro>
 
-        <SwipeIndicator>
-          Swipe til højre for at se mere →
-        </SwipeIndicator>
+        <TimelineScrollWrapper>
+          <TimelineScroll ref={scrollRef}>
+            <TimelineWrapper>
+              <TimelineLine />
+              {timelineSteps.map((step, index) => (
+                <TimelineItem 
+                  key={index}
+                  ref={(el) => (itemRefs.current[index] = el)}
+                  $visible={visibleItems.includes(index)}
+                  $delay={index * 0.1}
+                >
+                  <TimelineIcon $visible={visibleItems.includes(index)}>
+                    {step.icon}
+                  </TimelineIcon>
+                  <TimelineContent>
+                    <TimelineStepTitle>{step.title}</TimelineStepTitle>
+                    <TimelineStepDesc>{step.desc}</TimelineStepDesc>
+                  </TimelineContent>
+                </TimelineItem>
+              ))}
+            </TimelineWrapper>
+          </TimelineScroll>
 
-        <TimelineScroll>
-          <TimelineWrapper>
-            <TimelineLine />
-            {timelineSteps.map((step, index) => (
-              <TimelineItem 
-                key={index}
-                ref={(el) => (itemRefs.current[index] = el)}
-                $visible={visibleItems.includes(index)}
-                $delay={index * 0.1}
-              >
-                <TimelineIcon $visible={visibleItems.includes(index)}>
-                  {step.icon}
-                </TimelineIcon>
-                <TimelineContent>
-                  <TimelineStepTitle>{step.title}</TimelineStepTitle>
-                  <TimelineStepDesc>{step.desc}</TimelineStepDesc>
-                </TimelineContent>
-              </TimelineItem>
-            ))}
-          </TimelineWrapper>
-        </TimelineScroll>
+          {scrollPosition === 'start' && (
+            <ScrollIndicator $position="right">
+               →
+            </ScrollIndicator>
+          )}
+
+          {scrollPosition === 'middle' && (
+            <ScrollIndicator $position="left">
+              ← 
+            </ScrollIndicator>
+          )}
+        </TimelineScrollWrapper>
       </Container>
     </Section>
   )

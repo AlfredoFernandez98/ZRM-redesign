@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import {
     Section, SectionLabel, SectionTitle, SectionIntro,
     Grid, Card, CardLogoWrapper, CardName, CardDesc, CardButton,FeaturedBadge
@@ -25,6 +26,35 @@ import {
   ]
   
   function CRMSoftwares() {
+    const [visibleCards, setVisibleCards] = useState([])
+    const cardRefs = useRef([])
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = cardRefs.current.indexOf(entry.target)
+              if (index !== -1 && !visibleCards.includes(index)) {
+                setVisibleCards((prev) => [...prev, index])
+              }
+            }
+          })
+        },
+        { threshold: 0.2 }
+      )
+
+      cardRefs.current.forEach((ref) => {
+        if (ref) observer.observe(ref)
+      })
+
+      return () => {
+        cardRefs.current.forEach((ref) => {
+          if (ref) observer.unobserve(ref)
+        })
+      }
+    }, [visibleCards])
+
     return (
       <Section>
         <SectionLabel>Integrationer</SectionLabel>
@@ -33,8 +63,14 @@ import {
           Vi arbejder med markedets bedste platforme og er autoriseret Zoho-partner.
         </SectionIntro>
         <Grid>
-          {platforms.map((platform) => (
-            <Card key={platform.name} $featured={platform.featured}>
+          {platforms.map((platform, index) => (
+            <Card 
+              key={platform.name} 
+              $featured={platform.featured}
+              $visible={visibleCards.includes(index)}
+              $delay={index * 0.1}
+              ref={(el) => (cardRefs.current[index] = el)}
+            >
             {platform.featured && <FeaturedBadge>⭐ Anbefalet partner</FeaturedBadge>}
             <CardLogoWrapper>
               <img 
@@ -51,6 +87,6 @@ import {
         </Grid>
         </Section>
     )
-}
+  }
 
 export default CRMSoftwares

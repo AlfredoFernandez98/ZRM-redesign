@@ -87,42 +87,66 @@ export const SectionIntro = styled.p`
   }
 `
 
-export const SwipeIndicator = styled.div`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+export const TimelineScrollWrapper = styled.div`
+  position: relative;
+  margin-top: 2rem;
+`
+
+export const ScrollIndicator = styled.div`
+  position: absolute;
+  top: 40%;
+  ${({ $position }) => $position === 'right' ? 'right: -70px;' : 'left: -90px;'}
+  transform: translateY(-50%);
   background: ${({ theme }) => {
     return theme.colors.orange
   }};
   color: ${({ theme }) => {
     return theme.colors.white
   }};
-  padding: 0.75rem 1.5rem;
-  border-radius: 25px;
-  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
   font-weight: 600;
-  margin: 0 auto 2rem;
-  display: flex;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(245, 133, 10, 0.3);
-  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 4px 16px rgba(245, 133, 10, 0.35);
+  z-index: 10;
+  pointer-events: none;
+  animation: ${({ $position }) => $position === 'right' ? 'pulseRight' : 'pulseLeft'} 2s ease-in-out infinite;
+  white-space: nowrap;
 
-  @keyframes pulse {
+  @keyframes pulseRight {
     0%, 100% {
-      transform: translateX(0);
+      transform: translateY(-50%) translateX(0);
       opacity: 1;
     }
     50% {
-      transform: translateX(5px);
-      opacity: 0.8;
+      transform: translateY(-50%) translateX(5px);
+      opacity: 0.85;
     }
+  }
+
+  @keyframes pulseLeft {
+    0%, 100% {
+      transform: translateY(-50%) translateX(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-50%) translateX(-5px);
+      opacity: 0.85;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => {
+    return theme.breakpoints.tablet
+  }}) {
+    ${({ $position }) => $position === 'right' ? 'right: -60px;' : 'left: -75px;'}
+    font-size: 0.75rem;
+    padding: 0.45rem 0.9rem;
   }
 
   @media (max-width: ${({ theme }) => {
     return theme.breakpoints.mobile
   }}) {
-    font-size: 0.875rem;
-    padding: 0.65rem 1.25rem;
+    display: none;
   }
 `
 
