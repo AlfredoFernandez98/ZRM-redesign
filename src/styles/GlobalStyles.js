@@ -19,15 +19,9 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: ${({ theme }) => {
-      return theme.fonts.body
-    }};
-    color: ${({ theme }) => {
-      return theme.colors.text
-    }};
-    background: ${({ theme }) => {
-      return theme.colors.white
-    }};
+    font-family: ${({ theme }) => theme.fonts.body};
+    color: ${({ theme }) => theme.colors.text};
+    background: ${({ theme }) => theme.colors.white};
     overflow-x: hidden;
     line-height: 1.6;
     font-weight: 400;

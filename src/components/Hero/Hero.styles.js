@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 
 export const HeroSection = styled.section`
-  background: ${({ theme }) => {
-    return theme.colors.dark
-  }};
+  background: ${({ theme }) => theme.colors.dark};
   padding: 5rem 5%;
   position: relative;
   overflow: hidden;
@@ -36,15 +34,11 @@ export const HeroSection = styled.section`
     }
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: 3rem 5%;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 2rem 4%;
 
     &::before {
@@ -59,9 +53,7 @@ export const HeroSection = styled.section`
 export const HeroLabel = styled.span`
   display: inline-block;
   background: rgba(245,133,10,0.15);
-  color: ${({ theme }) => {
-    return theme.colors.orange
-  }};
+  color: ${({ theme }) => theme.colors.orange};
   border: 1px solid rgba(245,133,10,0.3);
   padding: 0.3rem 0.9rem;
   border-radius: 20px;
@@ -83,29 +75,21 @@ export const HeroLabel = styled.span`
     }
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 0.75rem;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 0.7rem;
     padding: 0.25rem 0.75rem;
   }
 `
 
 export const HeroTitle = styled.h1`
-  font-family: ${({ theme }) => {
-    return theme.fonts.heading
-  }};
+  font-family: ${({ theme }) => theme.fonts.heading};
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 800;
-  color: ${({ theme }) => {
-    return theme.colors.white
-  }};
+  color: ${({ theme }) => theme.colors.white};
   line-height: 1.1;
   max-width: 900px;
   margin-bottom: 2rem;
@@ -113,14 +97,10 @@ export const HeroTitle = styled.h1`
 
   em {
     font-style: normal;
-    color: ${({ theme }) => {
-      return theme.colors.orange
-    }};
+    color: ${({ theme }) => theme.colors.orange};
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 2.5rem;
     line-height: 1.15;
     margin-bottom: 1.5rem;
@@ -136,16 +116,12 @@ export const HeroText = styled.p`
   line-height: 1.7;
   animation: fadeInUp 0.6s ease-out 0.6s backwards;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 1.15rem;
     margin-bottom: 1.75rem;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 1rem;
     margin-bottom: 1.5rem;
   }
@@ -159,16 +135,12 @@ export const TrustSignals = styled.div`
   animation: fadeInUp 0.6s ease-out 0.7s backwards;
   flex-wrap: wrap;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     gap: 1.5rem;
     margin-bottom: 2rem;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.25rem;
@@ -193,15 +165,11 @@ export const TrustBadge = styled.div`
     transform: translateY(-2px);
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: 0.65rem 1.1rem;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0.6rem 1rem;
     width: 100%;
     justify-content: center;
@@ -213,15 +181,11 @@ export const GoogleStars = styled.div`
   line-height: 1;
   letter-spacing: 0.1em;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 0.95rem;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 0.9rem;
   }
 `
@@ -235,15 +199,11 @@ export const RatingText = styled.div`
 
   strong {
     font-weight: 700;
-    color: ${({ theme }) => {
-      return theme.colors.white
-    }};
+    color: ${({ theme }) => theme.colors.white};
     font-size: 1.1rem;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 0.9rem;
     
     strong {
@@ -251,9 +211,7 @@ export const RatingText = styled.div`
     }
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 0.875rem;
     
     strong {
@@ -268,9 +226,7 @@ export const CustomerLogos = styled.div`
   gap: 0.5rem;
   flex-wrap: wrap;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
     gap: 0.4rem;
   }
@@ -293,16 +249,12 @@ export const CustomerLogo = styled.div`
     border-color: rgba(255,255,255,0.2);
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 0.75rem;
     padding: 0.375rem 0.8rem;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 0.7rem;
     padding: 0.35rem 0.7rem;
     flex: 0 1 auto;
@@ -315,21 +267,15 @@ export const HeroButtons = styled.div`
   flex-wrap: wrap;
   animation: fadeInUp 0.6s ease-out 0.9s backwards;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     flex-direction: column;
     width: 100%;
   }
 `
 
 export const BtnPrimary = styled.a`
-  background: ${({ theme }) => {
-    return theme.colors.orange
-  }};
-  color: ${({ theme }) => {
-    return theme.colors.white
-  }};
+  background: ${({ theme }) => theme.colors.orange};
+  color: ${({ theme }) => theme.colors.white};
   padding: 0.85rem 1.8rem;
   border-radius: 8px;
   text-decoration: none;
@@ -374,9 +320,7 @@ export const BtnPrimary = styled.a`
     justify-content: center;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0.75rem 1.3rem;
     font-size: 0.875rem;
   }
@@ -396,21 +340,15 @@ export const BtnSecondary = styled.a`
 
   &:hover {
     border-color: rgba(255,255,255,0.5);
-    color: ${({ theme }) => {
-      return theme.colors.white
-    }};
+    color: ${({ theme }) => theme.colors.white};
   }
 
   &:focus-visible {
-    outline: 3px solid ${({ theme }) => {
-      return theme.colors.orange
-    }};
+    outline: 3px solid ${({ theme }) => theme.colors.orange};
     outline-offset: 2px;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
     width: 100%;
@@ -418,9 +356,7 @@ export const BtnSecondary = styled.a`
     text-align: center;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0.75rem 1.3rem;
     font-size: 0.875rem;
   }

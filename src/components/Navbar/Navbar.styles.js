@@ -4,9 +4,7 @@ export const Nav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: ${({ theme }) => {
-    return theme.colors.dark
-  }};
+  background: ${({ theme }) => theme.colors.dark};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,9 +12,7 @@ export const Nav = styled.nav`
   height: 72px;
   min-height: 72px;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0 4%;
     height: 64px;
     min-height: 64px;
@@ -28,35 +24,23 @@ export const ProgressBar = styled.div`
   bottom: 0;
   left: 0;
   height: 3px;
-  background: ${({ theme }) => {
-    return theme.colors.orange
-  }};
-  width: ${({ $progress }) => {
-    return $progress
-  }}%;
+  background: ${({ theme }) => theme.colors.orange};
+  width: ${({ $progress }) => $progress}%;
   transition: width 0.1s ease-out;
   z-index: 1001;
 `
 
 export const Logo = styled.span`
-  font-family: ${({ theme }) => {
-    return theme.fonts.heading
-  }};
+  font-family: ${({ theme }) => theme.fonts.heading};
   font-weight: 800;
   font-size: 1.5rem;
-  color: ${({ theme }) => {
-    return theme.colors.white
-  }};
+  color: ${({ theme }) => theme.colors.white};
 
   span {
-    color: ${({ theme }) => {
-      return theme.colors.orange
-    }};
+    color: ${({ theme }) => theme.colors.orange};
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 1.3rem;
   }
 `
@@ -68,9 +52,7 @@ export const NavLinks = styled.ul`
   margin: 0;
   padding: 0;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
   }
 `
@@ -83,19 +65,13 @@ export const NavLink = styled.a`
   transition: color 0.2s;
 
   &:hover {
-    color: ${({ theme }) => {
-      return theme.colors.white
-    }};
+    color: ${({ theme }) => theme.colors.white};
   }
 `
 
 export const NavCta = styled.a`
-  background: ${({ theme }) => {
-    return theme.colors.orange
-  }};
-  color: ${({ theme }) => {
-    return theme.colors.white
-  }};
+  background: ${({ theme }) => theme.colors.orange};
+  color: ${({ theme }) => theme.colors.white};
   padding: 0.6rem 1.5rem;
   border-radius: 8px;
   text-decoration: none;
@@ -103,9 +79,7 @@ export const NavCta = styled.a`
   font-weight: 600;
   transition: all 0.2s;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
   }
 
@@ -141,30 +115,22 @@ export const BurgerButton = styled.button`
     transition: all 0.3s;
 
     &:nth-child(1) {
-      transform: ${({ $open }) => {
-        return $open ? 'translateY(8.5px) rotate(45deg)' : 'none'
-      }};
+      transform: ${({ $open }) => $open ? 'translateY(8.5px) rotate(45deg)' : 'none'};
     }
 
     &:nth-child(2) {
-      opacity: ${({ $open }) => {
-        return $open ? '0' : '1'
-      }};
+      opacity: ${({ $open }) => $open ? '0' : '1'};
     }
 
     &:nth-child(3) {
-      transform: ${({ $open }) => {
-        return $open ? 'translateY(-8.5px) rotate(-45deg)' : 'none'
-      }};
+      transform: ${({ $open }) => $open ? 'translateY(-8.5px) rotate(-45deg)' : 'none'};
     }
   }
 `
 
 export const MobileMenu = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    display: ${({ $open }) => {
-      return $open ? 'flex' : 'none'
-    }};
+    display: ${({ $open }) => $open ? 'flex' : 'none'};
     flex-direction: column;
     position: fixed;
     top: 0;
@@ -177,9 +143,7 @@ export const MobileMenu = styled.div`
     z-index: 1002;
     padding: 0;
     overflow-y: auto;
-    animation: ${({ $open }) => {
-      return $open ? 'slideIn 0.3s ease-out' : 'none'
-    }};
+    animation: ${({ $open }) => $open ? 'slideIn 0.3s ease-out' : 'none'};
   }
 
   @media (min-width: calc(${({ theme }) => theme.breakpoints.tablet} + 1px)) {
@@ -238,13 +202,9 @@ export const MobileMenuHeader = styled.div`
   min-height: 72px;
   height: 72px;
   border-bottom: 1px solid rgba(0,0,0,0.1);
-  background: ${({ theme }) => {
-    return theme.colors.white
-  }};
+  background: ${({ theme }) => theme.colors.white};
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 1rem 4%;
     min-height: 64px;
     height: 64px;
@@ -252,24 +212,16 @@ export const MobileMenuHeader = styled.div`
 `
 
 export const MobileMenuLogo = styled.span`
-  font-family: ${({ theme }) => {
-    return theme.fonts.heading
-  }};
+  font-family: ${({ theme }) => theme.fonts.heading};
   font-weight: 800;
   font-size: 1.5rem;
-  color: ${({ theme }) => {
-    return theme.colors.dark
-  }};
+  color: ${({ theme }) => theme.colors.dark};
 
   span {
-    color: ${({ theme }) => {
-      return theme.colors.orange
-    }};
+    color: ${({ theme }) => theme.colors.orange};
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 1.3rem;
   }
 `
@@ -281,17 +233,13 @@ export const MobileMenuNav = styled.nav`
   gap: 0;
   flex: 1;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0.75rem 4%;
   }
 `
 
 export const MobileMenuItem = styled.a`
-  color: ${({ theme }) => {
-    return theme.colors.dark
-  }};
+  color: ${({ theme }) => theme.colors.dark};
   text-decoration: none;
   font-size: 1.125rem;
   font-weight: 500;
@@ -304,14 +252,10 @@ export const MobileMenuItem = styled.a`
   justify-content: space-between;
 
   &:hover {
-    color: ${({ theme }) => {
-      return theme.colors.orange
-    }};
+    color: ${({ theme }) => theme.colors.orange};
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 1rem;
     padding: 1rem 0;
   }
@@ -338,23 +282,15 @@ export const MobileMenuFooter = styled.div`
   padding: 2rem 5% 3rem;
   border-top: 1px solid rgba(0,0,0,0.1);
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 1.5rem 4% 2rem;
   }
 `
 
 export const MobileMenuCta = styled.a`
-  background: ${({ $variant, theme }) => {
-    return $variant === 'outline' ? 'transparent' : theme.colors.dark
-  }};
-  color: ${({ $variant, theme }) => {
-    return $variant === 'outline' ? theme.colors.dark : theme.colors.white
-  }};
-  border: ${({ $variant, theme }) => {
-    return $variant === 'outline' ? `2px solid ${theme.colors.dark}` : 'none'
-  }};
+  background: ${({ $variant, theme }) => $variant === 'outline' ? 'transparent' : theme.colors.dark};
+  color: ${({ $variant, theme }) => $variant === 'outline' ? theme.colors.dark : theme.colors.white};
+  border: ${({ $variant, theme }) => $variant === 'outline' ? `2px solid ${theme.colors.dark}` : 'none'};
   padding: 0.875rem 1.5rem;
   border-radius: 8px;
   text-decoration: none;
@@ -364,17 +300,11 @@ export const MobileMenuCta = styled.a`
   transition: all 0.2s;
 
   &:hover {
-    background: ${({ $variant, theme }) => {
-      return $variant === 'outline' ? theme.colors.dark : '#1a1a1a'
-    }};
-    color: ${({ theme }) => {
-      return theme.colors.white
-    }};
+    background: ${({ $variant, theme }) => $variant === 'outline' ? theme.colors.dark : '#1a1a1a'};
+    color: ${({ theme }) => theme.colors.white};
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0.75rem 1.25rem;
     font-size: 0.95rem;
   }

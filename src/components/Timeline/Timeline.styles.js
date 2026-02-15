@@ -1,20 +1,14 @@
 import styled from 'styled-components'
 
 export const Section = styled.section`
-  background: ${({ theme }) => {
-    return theme.colors.cream
-  }};
+  background: ${({ theme }) => theme.colors.cream};
   padding: 5rem 5%;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: 3rem 5%;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 2rem 4%;
   }
 `
@@ -26,9 +20,7 @@ export const Container = styled.div`
 
 export const SectionLabel = styled.span`
   display: block;
-  color: ${({ theme }) => {
-    return theme.colors.orange
-  }};
+  color: ${({ theme }) => theme.colors.orange};
   font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -36,37 +28,27 @@ export const SectionLabel = styled.span`
   margin-bottom: 0.75rem;
   text-align: center;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 0.85rem;
   }
 `
 
 export const SectionTitle = styled.h2`
-  font-family: ${({ theme }) => {
-    return theme.fonts.heading
-  }};
+  font-family: ${({ theme }) => theme.fonts.heading};
   font-size: clamp(1.8rem, 3.5vw, 2.6rem);
   font-weight: 700;
-  color: ${({ theme }) => {
-    return theme.colors.dark
-  }};
+  color: ${({ theme }) => theme.colors.dark};
   line-height: 1.15;
   margin-bottom: 1.5rem;
   text-align: center;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 1.5rem;
   }
 `
 
 export const SectionIntro = styled.p`
-  color: ${({ theme }) => {
-    return theme.colors.muted
-  }};
+  color: ${({ theme }) => theme.colors.muted};
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.7;
@@ -80,9 +62,7 @@ export const SectionIntro = styled.p`
     margin-bottom: 2rem;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 0.9rem;
   }
 `
@@ -97,12 +77,8 @@ export const ScrollIndicator = styled.div`
   top: 40%;
   ${({ $position }) => $position === 'right' ? 'right: -70px;' : 'left: -90px;'}
   transform: translateY(-50%);
-  background: ${({ theme }) => {
-    return theme.colors.orange
-  }};
-  color: ${({ theme }) => {
-    return theme.colors.white
-  }};
+  background: ${({ theme }) => theme.colors.orange};
+  color: ${({ theme }) => theme.colors.white};
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -135,17 +111,13 @@ export const ScrollIndicator = styled.div`
     }
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.tablet
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     ${({ $position }) => $position === 'right' ? 'right: -60px;' : 'left: -75px;'}
     font-size: 0.75rem;
     padding: 0.45rem 0.9rem;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     display: none;
   }
 `
@@ -155,11 +127,7 @@ export const TimelineScroll = styled.div`
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
-  scrollbar-color: ${({ theme }) => {
-    return theme.colors.orange
-  }} ${({ theme }) => {
-    return theme.colors.lightBg
-  }};
+  scrollbar-color: ${({ theme }) => theme.colors.orange} ${({ theme }) => theme.colors.lightBg};
   padding: 2rem 0;
   margin: 0 -5%;
   padding-left: 5%;
@@ -170,16 +138,12 @@ export const TimelineScroll = styled.div`
   }
 
   &::-webkit-scrollbar-track {
-    background: ${({ theme }) => {
-      return theme.colors.lightBg
-    }};
+    background: ${({ theme }) => theme.colors.lightBg};
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => {
-      return theme.colors.orange
-    }};
+    background: ${({ theme }) => theme.colors.orange};
     border-radius: 10px;
   }
 
@@ -187,9 +151,7 @@ export const TimelineScroll = styled.div`
     background: #d97308;
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     margin: 0 -4%;
     padding-left: 4%;
     padding-right: 4%;
@@ -203,9 +165,7 @@ export const TimelineWrapper = styled.div`
   padding: 3rem 0;
   min-width: max-content;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     gap: 2rem;
   }
 `
@@ -218,12 +178,8 @@ export const TimelineLine = styled.div`
   height: 3px;
   background: linear-gradient(
     to right,
-    ${({ theme }) => {
-      return theme.colors.orange
-    }},
-    ${({ theme }) => {
-      return theme.colors.orange
-    }} 80%,
+    ${({ theme }) => theme.colors.orange},
+    ${({ theme }) => theme.colors.orange} 80%,
     rgba(245, 133, 10, 0.3)
   );
   transform: translateY(-50%);
@@ -236,37 +192,25 @@ export const TimelineItem = styled.div`
   align-items: center;
   gap: 1.5rem;
   position: relative;
-  opacity: ${({ $visible }) => {
-    return $visible ? '1' : '0'
-  }};
-  transform: translateY(${({ $visible }) => {
-    return $visible ? '0' : '20px'
-  }});
+  opacity: ${({ $visible }) => $visible ? '1' : '0'};
+  transform: translateY(${({ $visible }) => $visible ? '0' : '20px'});
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  transition-delay: ${({ $delay }) => {
-    return $delay
-  }}s;
+  transition-delay: ${({ $delay }) => $delay}s;
 `
 
 export const TimelineIcon = styled.div`
   width: 60px;
   height: 60px;
-  background: ${({ theme }) => {
-    return theme.colors.white
-  }};
+  background: ${({ theme }) => theme.colors.white};
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   z-index: 2;
-  border: 4px solid ${({ theme }) => {
-    return theme.colors.orange
-  }};
+  border: 4px solid ${({ theme }) => theme.colors.orange};
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transform: scale(${({ $visible }) => {
-    return $visible ? '1' : '0'
-  }});
+  transform: scale(${({ $visible }) => $visible ? '1' : '0'});
   transition: transform 0.5s ease-out;
   flex-shrink: 0;
 
@@ -275,9 +219,7 @@ export const TimelineIcon = styled.div`
     box-shadow: 0 6px 20px rgba(245, 133, 10, 0.3);
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 50px;
     height: 50px;
     font-size: 1.3rem;
@@ -285,12 +227,8 @@ export const TimelineIcon = styled.div`
 `
 
 export const TimelineContent = styled.div`
-  background: ${({ theme }) => {
-    return theme.colors.white
-  }};
-  border: 1px solid ${({ theme }) => {
-    return theme.colors.border
-  }};
+  background: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 12px;
   padding: 1.5rem;
   width: 280px;
@@ -302,44 +240,32 @@ export const TimelineContent = styled.div`
     box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   }
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 240px;
     padding: 1.25rem;
   }
 `
 
 export const TimelineStepTitle = styled.h3`
-  font-family: ${({ theme }) => {
-    return theme.fonts.heading
-  }};
+  font-family: ${({ theme }) => theme.fonts.heading};
   font-size: 1.1rem;
   font-weight: 700;
-  color: ${({ theme }) => {
-    return theme.colors.dark
-  }};
+  color: ${({ theme }) => theme.colors.dark};
   margin-bottom: 0.5rem;
   line-height: 1.3;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 1rem;
   }
 `
 
 export const TimelineStepDesc = styled.p`
-  color: ${({ theme }) => {
-    return theme.colors.muted
-  }};
+  color: ${({ theme }) => theme.colors.muted};
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.5;
 
-  @media (max-width: ${({ theme }) => {
-    return theme.breakpoints.mobile
-  }}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: 0.85rem;
   }
 `
