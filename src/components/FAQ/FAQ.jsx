@@ -57,7 +57,6 @@ function FAQ() {
   }, []) // ← tom array her!
 
   const toggle = (index) => {
-    console.log('Clicking FAQ index:', index, 'Current openIndex:', openIndex)
     setOpenIndex(openIndex === index ? null : index)
   }
 

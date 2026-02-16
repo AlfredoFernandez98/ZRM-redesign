@@ -5,6 +5,7 @@ import {
     CloseButton, ProgressBar
   } from './Navbar.styles'
   import { useState, useEffect } from 'react'
+  import logoImg from '../../assets/Logo.png'
 
 
 function Navbar() {
@@ -14,10 +15,10 @@ function Navbar() {
     useEffect(() => {
       if (isOpen) {
         document.body.style.overflow = 'hidden'
-        console.log('Mobile menu opened')
+        
       } else {
         document.body.style.overflow = 'unset'
-        console.log('Mobile menu closed')
+        
       }
       return () => {
         document.body.style.overflow = 'unset'
@@ -25,13 +26,26 @@ function Navbar() {
     }, [isOpen])
 
     useEffect(() => {
+      let ticking = false
+      let lastUpdate = 0
+
       const handleScroll = () => {
-        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
-        const scrolled = (window.scrollY / windowHeight) * 100
-        setScrollProgress(scrolled)
+        const now = Date.now()
+        
+        if (!ticking && now - lastUpdate > 50) {
+          window.requestAnimationFrame(() => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
+            const scrolled = (window.scrollY / windowHeight) * 100
+            const rounded = Math.round(scrolled * 10) / 10
+            setScrollProgress(rounded)
+            lastUpdate = Date.now()
+            ticking = false
+          })
+          ticking = true
+        }
       }
 
-      window.addEventListener('scroll', handleScroll)
+      window.addEventListener('scroll', handleScroll, { passive: true })
       return () => {
         window.removeEventListener('scroll', handleScroll)
       }
@@ -40,7 +54,9 @@ function Navbar() {
   return (
     <>
       <Nav>
-        <Logo>ZRM<span>.</span></Logo>
+        <Logo>
+          <img src={logoImg} alt="ZRM Logo" />
+        </Logo>
         <NavLinks>
           <li><NavLink href="#">Services</NavLink></li>
           <li><NavLink href="#">Løsninger</NavLink></li>
@@ -52,7 +68,6 @@ function Navbar() {
         <BurgerButton 
           $open={isOpen} 
           onClick={() => {
-            console.log('Burger clicked, current state:', isOpen)
             setIsOpen(!isOpen)
           }}
         >
@@ -64,7 +79,9 @@ function Navbar() {
 
       <MobileMenu $open={isOpen}>
         <MobileMenuHeader>
-          <MobileMenuLogo>ZRM<span>.</span></MobileMenuLogo>
+          <MobileMenuLogo>
+            <img src={logoImg} alt="ZRM Logo" />
+          </MobileMenuLogo>
           <CloseButton onClick={() => setIsOpen(false)}>
             <span /><span />
           </CloseButton>
@@ -87,7 +104,7 @@ function Navbar() {
             Om ZRM
           </MobileMenuItem>
           <MobileMenuItem href="#" onClick={() => setIsOpen(false)}>
-            🇩🇰
+            🇩Dansk
           </MobileMenuItem>
         </MobileMenuNav>
 

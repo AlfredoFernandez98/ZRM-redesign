@@ -1,8 +1,8 @@
 
 const theme = {
     colors: {
-      orange: '#F5850A',
-      dark: '#0E1520',
+      orange: '#EA7A17',
+      dark: '#0D1A27',
       mid: '#1C2B3A',
       lightBg: '#F0F4F8',
       cream: '#FAFAF7',
@@ -11,10 +11,10 @@ const theme = {
       muted: '#5A6878',
       border: '#DDE3EA',
     },
-    fonts: {
-      heading: "'Barlow Condensed', sans-serif",
-      body: "'Barlow', sans-serif",
-    },
+  fonts: {
+    heading: "'Helvetica', Arial, sans-serif",
+    body: "'Open Sans', Arial, sans-serif",
+  },
     breakpoints: {
       mobile: '480px',
       tablet: '768px',

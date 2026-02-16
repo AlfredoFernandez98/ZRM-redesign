@@ -11,6 +11,7 @@ export const Nav = styled.nav`
   padding: 0 5%;
   height: 72px;
   min-height: 72px;
+  contain: layout style paint;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0 4%;
@@ -25,23 +26,29 @@ export const ProgressBar = styled.div`
   left: 0;
   height: 3px;
   background: ${({ theme }) => theme.colors.orange};
-  width: ${({ $progress }) => $progress}%;
-  transition: width 0.1s ease-out;
+  width: 100%;
   z-index: 1001;
+  transform: scaleX(${({ $progress }) => $progress / 100}) translateZ(0);
+  transform-origin: left;
+  will-change: transform;
+  contain: strict;
 `
 
-export const Logo = styled.span`
-  font-family: ${({ theme }) => theme.fonts.heading};
-  font-weight: 800;
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.colors.white};
+export const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 
-  span {
-    color: ${({ theme }) => theme.colors.orange};
+  img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 1.3rem;
+    img {
+      height: 28px;
+    }
   }
 `
 
@@ -211,18 +218,21 @@ export const MobileMenuHeader = styled.div`
   }
 `
 
-export const MobileMenuLogo = styled.span`
-  font-family: ${({ theme }) => theme.fonts.heading};
-  font-weight: 800;
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.colors.dark};
+export const MobileMenuLogo = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 
-  span {
-    color: ${({ theme }) => theme.colors.orange};
+  img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 1.3rem;
+    img {
+      height: 28px;
+    }
   }
 `
 

@@ -95,13 +95,15 @@ export const CustomScrollbar = styled.div`
 export const CustomScrollbarThumb = styled.div`
   position: absolute;
   top: 0;
-  left: ${({ $scrollProgress }) => $scrollProgress}%;
+  left: 0;
   height: 100%;
   width: ${({ $thumbWidth }) => $thumbWidth}%;
   background: ${({ theme }) => theme.colors.orange};
   border-radius: 6px;
-  transition: background 0.2s ease;
   cursor: pointer;
+  transform: translateX(${({ $scrollProgress }) => $scrollProgress}%) translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
 
   &:hover {
     background: #d97308;
@@ -198,6 +200,9 @@ export const TimelineWrapper = styled.div`
   position: relative;
   padding: 3rem 0;
   min-width: max-content;
+  will-change: scroll-position;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     gap: 2rem;
@@ -216,8 +221,9 @@ export const TimelineLine = styled.div`
     ${({ theme }) => theme.colors.orange} 80%,
     rgba(245, 133, 10, 0.3)
   );
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateZ(0);
   z-index: 0;
+  backface-visibility: hidden;
 `
 
 export const TimelineItem = styled.div`
@@ -227,9 +233,11 @@ export const TimelineItem = styled.div`
   gap: 1.5rem;
   position: relative;
   opacity: ${({ $visible }) => $visible ? '1' : '0'};
-  transform: translateY(${({ $visible }) => $visible ? '0' : '20px'});
+  transform: translateY(${({ $visible }) => $visible ? '0' : '20px'}) translateZ(0);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   transition-delay: ${({ $delay }) => $delay}s;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
 `
 
 export const TimelineIcon = styled.div`
@@ -244,12 +252,14 @@ export const TimelineIcon = styled.div`
   z-index: 2;
   border: 4px solid ${({ theme }) => theme.colors.orange};
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transform: scale(${({ $visible }) => $visible ? '1' : '0'});
+  transform: scale(${({ $visible }) => $visible ? '1' : '0'}) translateZ(0);
   transition: transform 0.5s ease-out;
   flex-shrink: 0;
+  will-change: transform;
+  backface-visibility: hidden;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) translateZ(0);
     box-shadow: 0 6px 20px rgba(245, 133, 10, 0.3);
   }
 
@@ -268,9 +278,10 @@ export const TimelineContent = styled.div`
   width: 280px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   transition: all 0.3s ease;
+  backface-visibility: hidden;
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) translateZ(0);
     box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   }
 

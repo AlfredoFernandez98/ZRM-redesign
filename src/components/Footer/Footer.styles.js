@@ -34,20 +34,21 @@ export const FooterTop = styled.div`
 
 export const BrandCol = styled.div``
 
-export const FooterLogo = styled.span`
-  font-family: ${({ theme }) => theme.fonts.heading};
-  font-weight: 800;
-  font-size: 1.6rem;
-  color: ${({ theme }) => theme.colors.white};
-  display: block;
+export const FooterLogo = styled.div`
+  display: flex;
+  align-items: center;
   margin-bottom: 1rem;
 
-  span {
-    color: ${({ theme }) => theme.colors.orange};
+  img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 1.4rem;
+    img {
+      height: 35px;
+    }
   }
 `
 

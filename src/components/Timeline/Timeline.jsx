@@ -60,67 +60,75 @@ function Timeline() {
   }
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = itemRefs.current.indexOf(entry.target)
-            if (index !== -1 && !visibleItems.includes(index)) {
-              setVisibleItems((prev) => [...prev, index])
-            }
-          }
-        })
-      },
-      {
-        threshold: 0.3,
-        rootMargin: '0px'
-      }
-    )
-
-    itemRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref)
-    })
-
-    return () => {
-      itemRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref)
-      })
-    }
-  }, [visibleItems])
+    // Show all items immediately to prevent shake during scroll
+    setVisibleItems(timelineSteps.map((_, index) => index))
+  }, [])
 
   useEffect(() => {
+    let ticking = false
+    let lastScrollLeft = 0
+    let lastUpdateTime = 0
+
     const handleScroll = () => {
-      if (!scrollRef.current) return
+      if (!scrollRef.current || ticking) return
       
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
-      const scrollThreshold = 50 // pixels
-
-      // Calculate scroll position for indicators
-      if (scrollLeft < scrollThreshold) {
-        setScrollPosition('start')
-      } else if (scrollLeft + clientWidth >= scrollWidth - scrollThreshold) {
-        setScrollPosition('end')
-      } else {
-        setScrollPosition('middle')
-      }
-
-      // Calculate custom scrollbar position and size
-      const maxScroll = scrollWidth - clientWidth
-      const scrollPercentage = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0
-      const thumbWidthPercentage = (clientWidth / scrollWidth) * 100
+      const { scrollLeft } = scrollRef.current
+      const now = Date.now()
       
-      setScrollProgress(scrollPercentage * (1 - thumbWidthPercentage / 100))
-      setThumbWidth(Math.max(thumbWidthPercentage, 10)) // minimum 10% width
+      // Only update if scroll changed significantly AND enough time passed (reduces updates drastically)
+      if (Math.abs(scrollLeft - lastScrollLeft) < 10 || now - lastUpdateTime < 100) return
+      
+      lastScrollLeft = scrollLeft
+      lastUpdateTime = now
+      ticking = true
+      
+      window.requestAnimationFrame(() => {
+        if (!scrollRef.current) {
+          ticking = false
+          return
+        }
+
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
+        const scrollThreshold = 50 // pixels
+
+        // Calculate scroll position for indicators
+        if (scrollLeft < scrollThreshold) {
+          setScrollPosition('start')
+        } else if (scrollLeft + clientWidth >= scrollWidth - scrollThreshold) {
+          setScrollPosition('end')
+        } else {
+          setScrollPosition('middle')
+        }
+
+        // Calculate custom scrollbar position and size
+        const maxScroll = scrollWidth - clientWidth
+        const scrollPercentage = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0
+        const thumbWidthPercentage = (clientWidth / scrollWidth) * 100
+        
+        // Batch state updates to reduce re-renders
+        const newProgress = scrollPercentage * (1 - thumbWidthPercentage / 100)
+        const newThumbWidth = Math.max(thumbWidthPercentage, 10)
+        
+        // Only update if values changed significantly
+        if (Math.abs(newProgress - scrollProgress) > 1) {
+          setScrollProgress(newProgress)
+        }
+        if (Math.abs(newThumbWidth - thumbWidth) > 1) {
+          setThumbWidth(newThumbWidth)
+        }
+        
+        ticking = false
+      })
     }
 
     const scrollElement = scrollRef.current
     if (scrollElement) {
-      scrollElement.addEventListener('scroll', handleScroll)
+      scrollElement.addEventListener('scroll', handleScroll, { passive: true })
       // Check initial position
       handleScroll()
       
       // Recalculate on window resize
-      window.addEventListener('resize', handleScroll)
+      window.addEventListener('resize', handleScroll, { passive: true })
     }
 
     return () => {

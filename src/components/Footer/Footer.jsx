@@ -3,13 +3,16 @@ import {
     BrandCol, FooterLogo, BrandText, ContactInfo,
     FooterCol, ColTitle, ColList, ColLink
   } from './Footer.styles'
+  import logoImg from '../../assets/Logo.png'
   
   function Footer() {
     return (
       <FooterWrapper>
         <FooterTop>
           <BrandCol>
-            <FooterLogo>ZRM<span>.</span></FooterLogo>
+            <FooterLogo>
+              <img src={logoImg} alt="ZRM Logo" />
+            </FooterLogo>
             <BrandText>
               Vi er specialister i optimering og automatisering af arbejdsgange og processer. Etableret i 2022 i hjertet af København.
             </BrandText>
