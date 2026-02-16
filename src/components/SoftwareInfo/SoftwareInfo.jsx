@@ -56,7 +56,7 @@ function SoftwareInfo() {
               Hvad er en softwareløsning, og hvordan kan den hjælpe din virksomhed?
             </SectionTitle>
             <SectionText>
-              Softwareløsninger dækker over programmer og applikationer, der optimerer og automatiserer forretningsprocesser. Hos ZRM udvikler vi løsninger skræddersyet præcist til din virksomheds behov.
+              Softwareløsninger dækker over programmer og applikationer, der optimerer og automatiserer forretningsprocesser. Hos ZRM udvikler vi dygtige løsninger skræddersyet præcist til din virksomheds behov – med en gennemarbejdet og professionel tilgang.
             </SectionText>
             <BenefitList>
               {benefits.map((benefit) => (

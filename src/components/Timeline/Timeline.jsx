@@ -151,7 +151,7 @@ function Timeline() {
           ZRM tilbyder komplet software udvikling, hvor vi håndterer hele processen – fra konceptudvikling til lancering og optimering. Vores softwareløsninger er designet til at effektivisere, optimere og fremtidssikre din virksomhed.
         </SectionIntro>
         <SectionIntro>
-          Vi tror på en struktureret og gennemsigtlig proces, der sikrer, at du som kunde føler dig tryg fra start til slut. Vores tilgang er baseret på tæt dialog, præcis planlægning og en målrettet eksekvering, der leverer resultater af højeste kvalitet.
+          Vi tror på en gennemarbejdet og professionel proces, der sikrer, at du som kunde føler dig tryg fra start til slut. Vores tilgang er simpel og baseret på tæt dialog, præcis planlægning og en målrettet eksekvering, der leverer resultater af højeste kvalitet.
         </SectionIntro>
         <SectionIntro>
           Hele processen gennemføres i <strong style={{color: '#F5850A'}}>6 klare trin</strong>, der sikrer en problemfri og effektiv implementering.

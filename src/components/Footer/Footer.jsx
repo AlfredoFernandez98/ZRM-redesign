@@ -14,7 +14,7 @@ import {
               <img src={logoImg} alt="ZRM Logo" />
             </FooterLogo>
             <BrandText>
-              Vi er specialister i optimering og automatisering af arbejdsgange og processer. Etableret i 2022 i hjertet af København.
+              Vi er specialister i optimering og automatisering af arbejdsgange og processer. Med en venlig, tryg og tålmodig tilgang sikrer vi en ordentlig og professionel løsning til din virksomhed. Etableret i 2022 i hjertet af København.
             </BrandText>
             <ContactInfo>
               Brolæggerstræde 6, 1211 København K<br />

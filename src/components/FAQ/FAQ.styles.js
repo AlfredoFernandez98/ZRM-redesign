@@ -58,7 +58,7 @@ export const Grid = styled.div`
 `
 
 export const FaqItem = styled.div`
-  border: 2px solid ${({ $open, theme }) => $open ? theme.colors.orange : theme.colors.border};
+  border: 1px solid ${({ $open, theme }) => $open ? theme.colors.orange : theme.colors.white};
   border-radius: 10px;
   overflow: hidden;
   background: white;

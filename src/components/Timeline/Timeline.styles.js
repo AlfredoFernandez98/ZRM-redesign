@@ -272,7 +272,7 @@ export const TimelineIcon = styled.div`
 
 export const TimelineContent = styled.div`
   background: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: none;
   border-radius: 12px;
   padding: 1.5rem;
   width: 280px;

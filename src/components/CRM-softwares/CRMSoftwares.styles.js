@@ -85,7 +85,7 @@ export const Grid = styled.div`
 
 export const Card = styled.div`
   background: ${({ theme }) => theme.colors.white};
-  border: 2px solid ${({ $featured, theme }) => $featured ? theme.colors.orange : theme.colors.border};
+  border: ${({ $featured, theme }) => $featured ? `2px solid ${theme.colors.orange}` : 'none'};
   border-radius: 12px;
   padding: 2rem;
   text-align: center;
@@ -95,6 +95,7 @@ export const Card = styled.div`
   transform: translateY(${({ $visible }) => $visible ? '0' : '30px'});
   transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.2s;
   transition-delay: ${({ $delay }) => $delay}s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 
   &:hover {
     box-shadow: 0 8px 32px rgba(0,0,0,0.08);
