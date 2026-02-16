@@ -57,7 +57,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: ${({ theme }) => theme.fonts.body};
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     color: ${({ theme }) => theme.colors.text};
     background: ${({ theme }) => theme.colors.white};
     overflow-x: hidden;
@@ -70,15 +70,32 @@ const GlobalStyles = createGlobalStyle`
     text-rendering: optimizeSpeed;
   }
 
-  /* Ensure all headings use Helvetica Bold */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: ${({ theme }) => theme.fonts.heading};
-    font-weight: 700;
+  /* Use system fonts on mobile, custom fonts on desktop */
+  @media (min-width: 769px) {
+    body {
+      font-family: ${({ theme }) => theme.fonts.body};
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: ${({ theme }) => theme.fonts.heading};
+      font-weight: 700;
+    }
+    
+    p, span, a, li, div, button, input, textarea, select {
+      font-family: ${({ theme }) => theme.fonts.body};
+    }
   }
 
-  /* Ensure all text elements use Open Sans Regular */
-  p, span, a, li, div, button, input, textarea, select {
-    font-family: ${({ theme }) => theme.fonts.body};
+  /* System fonts for mobile (no loading required) */
+  @media (max-width: 768px) {
+    h1, h2, h3, h4, h5, h6 {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      font-weight: 700;
+    }
+    
+    p, span, a, li, div, button, input, textarea, select {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    }
   }
 
   /* Touch-friendly links and buttons */
