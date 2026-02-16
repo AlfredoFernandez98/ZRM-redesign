@@ -6,8 +6,31 @@
     <meta name="description" content="ZRM – Professionel software-udvikling og CRM-løsninger" />
     <meta name="theme-color" content="#0E1520" />
     <link rel="icon" type="image/png" href="/src/assets/zrm_favion.png" />
-    <link rel="preload" href="/HelveticaBold.ttf" as="font" type="font/ttf" crossorigin="anonymous" />
-    <link rel="preload" href="/open-sans.regular.ttf" as="font" type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" href="/HelveticaBold.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/open-sans.regular.ttf" as="font" type="font/ttf" crossorigin />
+    <style>
+      @font-face {
+        font-family: 'Helvetica Neue';
+        src: url('/HelveticaBold.ttf') format('truetype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: fallback;
+      }
+      @font-face {
+        font-family: 'Open Sans';
+        src: url('/open-sans.regular.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: fallback;
+      }
+      body {
+        font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+        font-weight: 700;
+      }
+    </style>
     <title>ZRM – Software-udvikling</title>
   <body>
     <div id="root"></div>

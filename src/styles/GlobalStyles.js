@@ -1,33 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
- @font-face {
-    font-family: 'Helvetica';
-    src: url('/HelveticaBold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-    font-display: optional;
-    size-adjust: 100%;
-  }
-
-  @font-face {
-    font-family: 'Helvetica';
-    src: url('/HelveticaBold.ttf') format('truetype');
-    font-weight: 800;
-    font-style: normal;
-    font-display: optional;
-    size-adjust: 100%;
-  }
-
-  @font-face {
-    font-family: 'Open Sans';
-    src: url('/open-sans.regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: optional;
-    size-adjust: 100%;
-  }
-
   *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -46,14 +19,14 @@ const GlobalStyles = createGlobalStyle`
 
   .animate {
     opacity: 0;
-    transform: translateY(20px) translateZ(0);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-    will-change: opacity, transform;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    backface-visibility: hidden;
   }
 
   .animate.visible {
     opacity: 1;
-    transform: translateY(0) translateZ(0);
+    transform: translateY(0);
   }
 
   body {
@@ -66,8 +39,7 @@ const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent;
-    font-synthesis: none;
-    text-rendering: optimizeSpeed;
+    text-rendering: optimizeLegibility;
   }
 
   /* Use system fonts on mobile, custom fonts on desktop */
