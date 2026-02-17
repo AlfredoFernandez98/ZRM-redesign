@@ -89,16 +89,14 @@ export const Card = styled.div`
   border-radius: 12px;
   padding: 2rem;
   text-align: center;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: transform 0.2s;
   position: relative;
   opacity: ${({ $visible }) => $visible ? '1' : '0'};
   transform: translateY(${({ $visible }) => $visible ? '0' : '30px'});
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.2s;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   transition-delay: ${({ $delay }) => $delay}s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 
   &:hover {
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
     transform: translateY(-3px);
   }
 

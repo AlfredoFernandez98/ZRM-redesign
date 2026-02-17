@@ -19,7 +19,6 @@ export const Card = styled.div`
   overflow: hidden;
   max-width: 1300px;
   margin: 0 auto;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
   opacity: ${({ $visible }) => $visible ? '1' : '0'};
   transform: translateY(${({ $visible }) => $visible ? '0' : '30px'});
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;

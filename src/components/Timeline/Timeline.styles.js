@@ -289,13 +289,11 @@ export const TimelineContent = styled.div`
   border-radius: 12px;
   padding: 1.5rem;
   width: 280px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   transition: all 0.3s ease;
   backface-visibility: hidden;
 
   &:hover {
     transform: translateY(-5px) translateZ(0);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {

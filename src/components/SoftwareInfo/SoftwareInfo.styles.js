@@ -16,7 +16,6 @@ export const Card = styled.div`
   background: ${({ theme }) => theme.colors.cream};
   border-radius: 20px;
   padding: 3rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
   opacity: ${({ $visible }) => $visible ? '1' : '0'};
   transform: translateY(${({ $visible }) => $visible ? '0' : '30px'});
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -168,7 +167,6 @@ export const BenefitText = styled.div`
 export const ImageCol = styled.div`
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
 
   img {
     width: 100%;

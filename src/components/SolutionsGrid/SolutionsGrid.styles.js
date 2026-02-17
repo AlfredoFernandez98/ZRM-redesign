@@ -66,12 +66,11 @@ export const GridCard = styled.div`
   justify-content: center;
   opacity: ${({ $visible }) => $visible ? '1' : '0'};
   transform: translateY(${({ $visible }) => $visible ? '0' : '20px'});
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out, border-color 0.2s, box-shadow 0.2s;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, border-color 0.2s;
   transition-delay: ${({ $delay }) => $delay}s;
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.orange};
-    box-shadow: 0 4px 16px rgba(245,133,10,0.1);
     transform: translateY(-2px);
   }
 
