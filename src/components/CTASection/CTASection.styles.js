@@ -127,18 +127,17 @@ export const BtnPrimary = styled.a`
 `
 
 export const BtnSecondary = styled.a`
-  background: transparent;
+  background: rgba(255,255,255,0.1);
   color: ${({ theme }) => theme.colors.white};
   padding: 0.85rem 1.8rem;
   border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.25);
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
-  transition: border-color 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s;
 
   &:hover {
-    border-color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.2);
   }
 
   &:focus-visible {

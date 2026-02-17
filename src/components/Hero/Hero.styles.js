@@ -52,9 +52,8 @@ export const HeroSection = styled.section`
 
 export const HeroLabel = styled.span`
   display: inline-block;
-  background: rgba(245,133,10,0.15);
+  background: rgba(245,133,10,0.2);
   color: ${({ theme }) => theme.colors.orange};
-  border: 1px solid rgba(245,133,10,0.3);
   padding: 0.3rem 0.9rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -156,11 +155,9 @@ export const BtnPrimary = styled.a`
   @keyframes breathe {
     0%, 100% {
       transform: scale(1);
-      box-shadow: 0 4px 12px rgba(245, 133, 10, 0.3);
     }
     50% {
       transform: scale(1.02);
-      box-shadow: 0 6px 20px rgba(245, 133, 10, 0.5);
     }
   }
 
@@ -191,19 +188,18 @@ export const BtnPrimary = styled.a`
 `
 
 export const BtnSecondary = styled.a`
-  background: transparent;
+  background: rgba(255,255,255,0.1);
   color: rgba(255,255,255,0.9);
   padding: 0.85rem 1.8rem;
   border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.3);
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
   display: inline-block;
 
   &:hover {
-    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.2);
     color: ${({ theme }) => theme.colors.white};
   }
 

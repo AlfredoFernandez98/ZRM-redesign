@@ -52,7 +52,6 @@ export const TwoCol = styled.div`
 export const ImageCol = styled.div`
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
 
   img {
     width: 100%;

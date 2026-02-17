@@ -58,16 +58,15 @@ export const Grid = styled.div`
 `
 
 export const FaqItem = styled.div`
-  border: 1px solid ${({ $open, theme }) => $open ? theme.colors.orange : theme.colors.white};
   border-radius: 10px;
   overflow: hidden;
-  background: white;
+  background: ${({ $open, theme }) => $open ? theme.colors.cream : 'white'};
   opacity: ${({ $visible }) => $visible ? '1' : '0'};
   transform: translateY(${({ $visible }) => $visible ? '0' : '20px'});
   
   /* Separate transitions - delay only for initial visibility animation */
   transition: 
-    border-color 0.3s ease 0s,
+    background 0.3s ease 0s,
     opacity 0.6s ease-out ${({ $delay, $visible }) => $visible ? `${$delay}s` : '0s'},
     transform 0.6s ease-out ${({ $delay, $visible }) => $visible ? `${$delay}s` : '0s'};
 `

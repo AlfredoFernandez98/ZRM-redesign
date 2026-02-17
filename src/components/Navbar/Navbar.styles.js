@@ -298,9 +298,8 @@ export const MobileMenuFooter = styled.div`
 `
 
 export const MobileMenuCta = styled.a`
-  background: ${({ $variant, theme }) => $variant === 'outline' ? 'transparent' : theme.colors.dark};
+  background: ${({ $variant, theme }) => $variant === 'outline' ? theme.colors.cream : theme.colors.dark};
   color: ${({ $variant, theme }) => $variant === 'outline' ? theme.colors.dark : theme.colors.white};
-  border: ${({ $variant, theme }) => $variant === 'outline' ? `2px solid ${theme.colors.dark}` : 'none'};
   padding: 0.875rem 1.5rem;
   border-radius: 8px;
   text-decoration: none;
@@ -310,7 +309,7 @@ export const MobileMenuCta = styled.a`
   transition: all 0.2s;
 
   &:hover {
-    background: ${({ $variant, theme }) => $variant === 'outline' ? theme.colors.dark : '#1a1a1a'};
+    background: ${({ $variant, theme }) => $variant === 'outline' ? theme.colors.orange : '#1a1a1a'};
     color: ${({ theme }) => theme.colors.white};
   }
 

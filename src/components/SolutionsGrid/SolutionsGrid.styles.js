@@ -52,7 +52,6 @@ export const Grid = styled.div`
 
 export const GridCard = styled.div`
   background: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 10px;
   padding: 1.25rem;
   font-size: 0.9rem;
@@ -66,11 +65,11 @@ export const GridCard = styled.div`
   justify-content: center;
   opacity: ${({ $visible }) => $visible ? '1' : '0'};
   transform: translateY(${({ $visible }) => $visible ? '0' : '20px'});
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out, border-color 0.2s;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   transition-delay: ${({ $delay }) => $delay}s;
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.orange};
+    background: ${({ theme }) => theme.colors.cream};
     transform: translateY(-2px);
   }
 

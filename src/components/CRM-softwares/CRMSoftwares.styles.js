@@ -84,12 +84,11 @@ export const Grid = styled.div`
 `
 
 export const Card = styled.div`
-  background: ${({ theme }) => theme.colors.white};
-  border: ${({ $featured, theme }) => $featured ? `2px solid ${theme.colors.orange}` : 'none'};
+  background: ${({ $featured }) => $featured ? '#EEEAE6' : '#ffffff'};
   border-radius: 12px;
   padding: 2rem;
   text-align: center;
-  transition: transform 0.2s;
+  transition: transform 0.2s, background 0.2s;
   position: relative;
   opacity: ${({ $visible }) => $visible ? '1' : '0'};
   transform: translateY(${({ $visible }) => $visible ? '0' : '30px'});
@@ -98,6 +97,7 @@ export const Card = styled.div`
 
   &:hover {
     transform: translateY(-3px);
+    background: ${({ $featured }) => $featured ? '#E5E0DB' : '#fafafa'};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -135,7 +135,7 @@ export const CardDesc = styled.p`
 
 export const CardButton = styled.a`
   display: inline-block;
-  border: 1px solid ${({ theme }) => theme.colors.dark};
+  background: rgba(245, 133, 10, 0.12);
   color: ${({ theme }) => theme.colors.dark};
   padding: 0.5rem 1.25rem;
   border-radius: 6px;

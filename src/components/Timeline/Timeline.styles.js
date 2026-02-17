@@ -123,7 +123,6 @@ export const ScrollIndicator = styled.div`
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
-  box-shadow: 0 4px 16px rgba(245, 133, 10, 0.35);
   z-index: 10;
   pointer-events: none;
   animation: ${({ $position }) => $position === 'right' ? 'pulseRight' : 'pulseLeft'} 2s ease-in-out infinite;
@@ -245,15 +244,13 @@ export const TimelineItem = styled.div`
 export const TimelineIcon = styled.div`
   width: 60px;
   height: 60px;
-  background: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.orange};
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   z-index: 2;
-  border: 4px solid ${({ theme }) => theme.colors.orange};
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transform: scale(${({ $visible }) => $visible ? '1' : '0'}) translateZ(0);
   transition: transform 0.5s ease-out;
   flex-shrink: 0;
@@ -268,7 +265,6 @@ export const TimelineIcon = styled.div`
 
   &:hover {
     transform: scale(1.1) translateZ(0);
-    box-shadow: 0 6px 20px rgba(245, 133, 10, 0.3);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
