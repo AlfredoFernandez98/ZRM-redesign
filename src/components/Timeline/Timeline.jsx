@@ -5,15 +5,20 @@ import {
   TimelineContent, TimelineStepTitle, TimelineStepDesc, TimelineLine,
   ScrollIndicator, TimelineScrollWrapper, CustomScrollbar, CustomScrollbarThumb
 } from './Timeline.styles'
+import searchIcon from '../../assets/vectors/magnifying-glass-svgrepo-com (1).svg'
+import checkIcon from '../../assets/vectors/check-svgrepo-com.svg'
+import notesIcon from '../../assets/vectors/notes-outlined-pen-and-paper-svgrepo-com.svg'
+import resetIcon from '../../assets/vectors/reset-reload-refresh-sync-arrow-update-svgrepo-com.svg'
+import ideaIcon from '../../assets/vectors/idea-bulb-glow-svgrepo-com.svg'
 
 const timelineSteps = [
   {
-    icon: '🔍',
+    icon: <img src={searchIcon} alt="Search" style={{ width: '28px', height: '28px' }} />,
     title: 'Idé og konceptudvikling',
     desc: 'Vi starter med at forstå dine behov og definere projektets omfang'
   },
   {
-    icon: '✓',
+    icon: <img src={checkIcon} alt="Check" style={{ width: '28px', height: '28px' }} />,
     title: 'Planlægning og design',
     desc: 'Detaljeret planlægning af arkitektur og brugergrænseflader'
   },
@@ -23,17 +28,17 @@ const timelineSteps = [
     desc: 'Agil udvikling med løbende feedback og iterationer'
   },
   {
-    icon: '📋',
+    icon: <img src={notesIcon} alt="Notes" style={{ width: '28px', height: '28px' }} />,
     title: 'Test og kvalitetssikring',
     desc: 'Grundig testning for at sikre høj kvalitet og performance'
   },
   {
-    icon: '🔄',
+    icon: <img src={resetIcon} alt="Reset" style={{ width: '28px', height: '28px' }} />,
     title: 'Lancering',
     desc: 'Deployment og go-live med fuld support'
   },
   {
-    icon: '💡',
+    icon: <img src={ideaIcon} alt="Idea" style={{ width: '28px', height: '28px' }} />,
     title: 'Vedligeholdelse og optimering',
     desc: 'Kontinuerlig support og forbedringer efter lancering'
   }
@@ -65,77 +70,79 @@ function Timeline() {
   }, [])
 
   useEffect(() => {
-    let ticking = false
-    let lastScrollLeft = 0
-    let lastUpdateTime = 0
+    const updateScrollbar = () => {
+      if (!scrollRef.current) return
 
-    const handleScroll = () => {
-      if (!scrollRef.current || ticking) return
-      
-      const { scrollLeft } = scrollRef.current
-      const now = Date.now()
-      
-      // Only update if scroll changed significantly AND enough time passed (reduces updates drastically)
-      if (Math.abs(scrollLeft - lastScrollLeft) < 10 || now - lastUpdateTime < 100) return
-      
-      lastScrollLeft = scrollLeft
-      lastUpdateTime = now
-      ticking = true
-      
-      window.requestAnimationFrame(() => {
-        if (!scrollRef.current) {
-          ticking = false
-          return
-        }
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
+      const scrollThreshold = 50
 
-        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
-        const scrollThreshold = 50 // pixels
+      // Update scroll position indicators
+      if (scrollLeft < scrollThreshold) {
+        setScrollPosition('start')
+      } else if (scrollLeft + clientWidth >= scrollWidth - scrollThreshold) {
+        setScrollPosition('end')
+      } else {
+        setScrollPosition('middle')
+      }
 
-        // Calculate scroll position for indicators
-        if (scrollLeft < scrollThreshold) {
-          setScrollPosition('start')
-        } else if (scrollLeft + clientWidth >= scrollWidth - scrollThreshold) {
-          setScrollPosition('end')
-        } else {
-          setScrollPosition('middle')
-        }
+      // Calculate scrollbar thumb
+      const maxScroll = scrollWidth - clientWidth
+      
+      if (maxScroll <= 0) {
+        // No scrolling needed
+        setScrollProgress(0)
+        setThumbWidth(100)
+        return
+      }
 
-        // Calculate custom scrollbar position and size
-        const maxScroll = scrollWidth - clientWidth
-        const scrollPercentage = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0
-        const thumbWidthPercentage = (clientWidth / scrollWidth) * 100
-        
-        // Batch state updates to reduce re-renders
-        const newProgress = scrollPercentage * (1 - thumbWidthPercentage / 100)
-        const newThumbWidth = Math.max(thumbWidthPercentage, 10)
-        
-        // Only update if values changed significantly
-        if (Math.abs(newProgress - scrollProgress) > 1) {
-          setScrollProgress(newProgress)
-        }
-        if (Math.abs(newThumbWidth - thumbWidth) > 1) {
-          setThumbWidth(newThumbWidth)
-        }
-        
-        ticking = false
-      })
+      // Base thumb width as percentage of scrollbar
+      const baseThumbWidth = (clientWidth / scrollWidth) * 100
+      
+      // Scroll progress (0 to 1)
+      const progress = scrollLeft / maxScroll
+      
+      // Calculate base thumb position
+      const baseThumbPosition = progress * (100 - baseThumbWidth)
+      
+      // Calculate how much the thumb needs to extend to reach 100%
+      // At position X with width W, the thumb covers X to X+W
+      // We want it to cover X to 100%, so we need width = 100 - X
+      const currentEnd = baseThumbPosition + baseThumbWidth
+      const gap = 100 - currentEnd
+      
+      // Adjust width to fill the gap (smooth transition)
+      // Only adjust if gap is small (< 5%) to avoid visual jumps
+      let adjustedWidth = baseThumbWidth
+      let adjustedPosition = baseThumbPosition
+      
+      if (gap > 0 && gap < 5) {
+        // Smoothly extend width to fill the remaining space
+        adjustedWidth = baseThumbWidth + gap
+      } else if (gap < 0 && gap > -5) {
+        // Smoothly reduce position if we're slightly over
+        adjustedPosition = Math.max(0, baseThumbPosition + gap)
+      }
+      
+      setScrollProgress(adjustedPosition)
+      setThumbWidth(Math.max(adjustedWidth, 10))
     }
 
     const scrollElement = scrollRef.current
-    if (scrollElement) {
-      scrollElement.addEventListener('scroll', handleScroll, { passive: true })
-      // Check initial position
-      handleScroll()
-      
-      // Recalculate on window resize
-      window.addEventListener('resize', handleScroll, { passive: true })
-    }
+    if (!scrollElement) return
+
+    // Set initial scroll to 0
+    scrollElement.scrollLeft = 0
+    
+    // Initial update
+    updateScrollbar()
+
+    // Listen to scroll events
+    scrollElement.addEventListener('scroll', updateScrollbar, { passive: true })
+    window.addEventListener('resize', updateScrollbar, { passive: true })
 
     return () => {
-      if (scrollElement) {
-        scrollElement.removeEventListener('scroll', handleScroll)
-        window.removeEventListener('resize', handleScroll)
-      }
+      scrollElement.removeEventListener('scroll', updateScrollbar)
+      window.removeEventListener('resize', updateScrollbar)
     }
   }, [])
 

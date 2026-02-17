@@ -102,8 +102,10 @@ export const CustomScrollbarThumb = styled.div`
   border-radius: 6px;
   cursor: pointer;
   transform: translateX(${({ $scrollProgress }) => $scrollProgress}%) translateZ(0);
-  will-change: transform;
+  transform-origin: left center;
+  will-change: transform, width;
   backface-visibility: hidden;
+  transition: width 0.15s ease-out;
 
   &:hover {
     background: #d97308;
@@ -258,6 +260,12 @@ export const TimelineIcon = styled.div`
   will-change: transform;
   backface-visibility: hidden;
 
+  /* Style SVG icons */
+  img {
+    width: 28px;
+    height: 28px;
+  }
+
   &:hover {
     transform: scale(1.1) translateZ(0);
     box-shadow: 0 6px 20px rgba(245, 133, 10, 0.3);
@@ -267,6 +275,11 @@ export const TimelineIcon = styled.div`
     width: 50px;
     height: 50px;
     font-size: 1.3rem;
+    
+    img {
+      width: 24px;
+      height: 24px;
+    }
   }
 `
 
