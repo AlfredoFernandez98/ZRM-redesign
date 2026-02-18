@@ -97,7 +97,21 @@ export const Card = styled.div`
 
   &:hover {
     transform: translateY(-3px);
-    background: ${({ $featured }) => $featured ? '#E5E0DB' : '#fafafa'};
+    background: ${({ theme }) => theme.colors.orange};
+    
+    h3, p {
+      color: ${({ theme }) => theme.colors.white};
+    }
+    
+    a {
+      background: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.colors.orange};
+      
+      &:hover {
+        background: ${({ theme }) => theme.colors.dark};
+        color: ${({ theme }) => theme.colors.white};
+      }
+    }
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -123,6 +137,7 @@ export const CardName = styled.h3`
   color: ${({ theme }) => theme.colors.dark};
   margin-bottom: 0.5rem;
   font-size: 1rem;
+  transition: color 0.2s ease;
 `
 
 export const CardDesc = styled.p`
@@ -131,6 +146,7 @@ export const CardDesc = styled.p`
   font-weight: 400;
   margin-bottom: 1.5rem;
   line-height: 1.6;
+  transition: color 0.2s ease;
 `
 
 export const CardButton = styled.a`

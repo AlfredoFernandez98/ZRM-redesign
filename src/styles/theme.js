@@ -2,7 +2,7 @@
 const theme = {
     colors: {
       orange: '#F5850A',
-      dark: '#0E1520',
+      dark: '#0D1A27',
       mid: '#1C2B3A',
       lightBg: '#F0F4F8',
       cream: '#FAFAF7',

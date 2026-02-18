@@ -105,7 +105,7 @@ export const ColLink = styled.a`
   transition: color 0.2s ease;
 
   &:hover {
-    color: rgba(255,255,255,0.85);
+    color: ${({ theme }) => theme.colors.orange};
   }
 
   &:focus-visible {

@@ -69,7 +69,8 @@ export const GridCard = styled.div`
   transition-delay: ${({ $delay }) => $delay}s;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.cream};
+    background: ${({ theme }) => theme.colors.orange};
+    color: ${({ theme }) => theme.colors.white};
     transform: translateY(-2px);
   }
 
